@@ -1,11 +1,12 @@
 <?php
+
 use think\facade\Route;
 use think\facade\Request;
 use think\Response;
 use mall\middleware\AllowOrigin;
 use mall\middleware\VerifyToken;
 
-Route::group(function() {
+Route::group(function () {
     Route::any("pay/notify", "api/pay.index/notify");
     Route::any("wechat.index/", "api/wechat.index/index");
     Route::any("wechat/notify", "api/wechat.index/notify");
@@ -13,8 +14,8 @@ Route::group(function() {
     //Route::get('test', 'api/wap.index/test');
 });
 
-Route::group(function(){
-    Route::post('share/config','api/wechat.Index/config');
+Route::group(function () {
+    Route::post('share/config', 'api/wechat.Index/config');
     Route::any('oauth', 'api/wechat.OAuth/index');
     Route::any("auth", "api/wechat.OAuth/auth");
     Route::any("login", "api/wechat.OAuth/login");
@@ -33,6 +34,7 @@ Route::group(function(){
     Route::get('products/recommend', 'api/wap.products/recommend');
     Route::get('comments/list', 'api/wap.comments/index');
     Route::post('public/login', 'api/wap.users/login');
+    Route::post('public/sso', 'api/wap.users/sso');
     Route::get('send_sms', 'api/wap.users/send_sms');
     Route::post('register', 'api/wap.users/register');
     Route::post('forget', 'api/wap.users/forget');
@@ -47,10 +49,10 @@ Route::group(function(){
     Route::post('payment/index', 'api/wap.payment/index');
 })->middleware(AllowOrigin::class);
 
-Route::group(function(){
-    Route::post('wx/info','api/wap.Ucenter/wxmini_userinfo');
-    Route::get('share/index','api/wap.Share/index');
-    Route::post('share/upload','api/wap.Share/upload');
+Route::group(function () {
+    Route::post('wx/info', 'api/wap.Ucenter/wxmini_userinfo');
+    Route::get('share/index', 'api/wap.Share/index');
+    Route::post('share/upload', 'api/wap.Share/upload');
     Route::get('goods/favorite', 'api/wap.goods/favorite');
     Route::get('special/view', 'api/wap.special/view');
     Route::get('cart', 'api/wap.cart/index');
@@ -110,16 +112,16 @@ Route::group(function(){
     Route::post('service/upload', 'api/wap.service/upload');
 })->middleware(AllowOrigin::class)->middleware(VerifyToken::class);
 
-Route::miss(function(){
-    if(Request::isOptions()){
+Route::miss(function () {
+    if (Request::isOptions()) {
         return Response::create('ok')->code(200)->header([
             'Access-Control-Allow-Credentials' => 'true',
-            'Access-Control-Allow-Origin'   => '*',
-            'Access-Control-Allow-Headers'  => 'Auth-Token, Content-Type, If-Match, If-Modified-Since, If-None-Match, If-Unmodified-Since, X-Requested-With',
-            'Access-Control-Allow-Methods'  => 'GET,POST,PATCH,PUT,DELETE,OPTIONS',
-            'Access-Control-Max-Age'        =>  '1728000'
+            'Access-Control-Allow-Origin' => '*',
+            'Access-Control-Allow-Headers' => 'Auth-Token, Content-Type, If-Match, If-Modified-Since, If-None-Match, If-Unmodified-Since, X-Requested-With',
+            'Access-Control-Allow-Methods' => 'GET,POST,PATCH,PUT,DELETE,OPTIONS',
+            'Access-Control-Max-Age' => '1728000'
         ]);
-    }else{
+    } else {
         return Response::create()->code(404);
     }
 });
