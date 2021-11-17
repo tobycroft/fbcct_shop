@@ -90,7 +90,7 @@ class Users extends Base
             return $this->returnAjax("ok", $json["echo"]);
 
         } else {
-            return $this->returnAjax("ok", $json);
+            return $this->returnAjax("ok", $json["echo"]);
 
         }
     }
