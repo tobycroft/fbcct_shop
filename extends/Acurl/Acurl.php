@@ -31,7 +31,7 @@ class Acurl
         // curl_setopt($curl, CURLOPT_TIMEOUT_MS, 500);
 
         // 设置请求头
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+//        curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
 
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, FALSE);
