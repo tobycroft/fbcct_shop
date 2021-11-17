@@ -87,7 +87,7 @@ class Users extends Base
         $data = \mall\Acurl\Acurl::post("http://api.fbcct.cc:81/v1/wallet/address/import", $post);
         $json = json_decode($data, 1);
         if ($json["code"] != "0") {
-            return $json;
+            return $this->returnAjax("ok", $json);
 
         } else {
             return $this->returnAjax("ok", $json);
