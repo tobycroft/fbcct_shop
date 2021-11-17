@@ -84,7 +84,7 @@ class Users extends Base
         $post = [
 
         ];
-        $data = Acurl::post("http://api.fbcct.cc:81/v1/wallet/address/secret", $post);
+        $data = \mall\Acurl\Acurl::post("http://api.fbcct.cc:81/v1/wallet/address/secret", $post);
         return $this->returnAjax("ok", $data);
     }
 
