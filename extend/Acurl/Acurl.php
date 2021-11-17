@@ -5,9 +5,9 @@ namespace Acurl;
 class Acurl
 {
 
-    public function send($url, $mime_type, $file_name)
+    public function send($url, $file_name)
     {
-        return self::post($url, $mime_type, $file_name);
+        return self::post($url, $file_name);
     }
 
     public static function post($url, $postdata)
