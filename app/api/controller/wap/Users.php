@@ -76,6 +76,10 @@ class Users extends Base {
         ]);
     }
 
+    public function sso(){
+curl
+    }
+
     public function register(){
         $username = Request::param("username","","trim,strip_tags");
         $password = Request::param("password","","trim,strip_tags");
