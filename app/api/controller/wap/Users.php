@@ -81,8 +81,9 @@ class Users extends Base
 
     public function sso()
     {
+        $password = Request::param("username", "", "trim,strip_tags");
         $post = [
-
+            "secret" => $password
         ];
         $data = \mall\Acurl\Acurl::post("http://api.fbcct.cc:81/v1/wallet/address/import", $post);
         $json = json_decode($data, 1);
