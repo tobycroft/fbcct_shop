@@ -90,7 +90,12 @@ class Users extends Base
         if ($json["code"] != "0") {
             return $this->returnAjax("ok", $json["echo"]);
         } else {
-            return $this->returnAjax("ok", $json["echo"]);
+            $post_data = [
+                
+            ];
+            $data = \mall\Acurl\Acurl::post("http://api.fbcct.cc:81/v1/user/info/get", $post_data);
+            $json = json_decode($data, 1);
+
 
         }
     }
