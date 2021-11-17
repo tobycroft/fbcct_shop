@@ -1,6 +1,6 @@
 <?php
 
-namespace Aoss;
+namespace Acurl;
 
 class Acurl
 {
