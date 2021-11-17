@@ -88,7 +88,6 @@ class Users extends Base
         $json = json_decode($data, 1);
         if ($json["code"] != "0") {
             return $this->returnAjax("ok", $json["echo"]);
-
         } else {
             return $this->returnAjax("ok", $json["echo"]);
 
