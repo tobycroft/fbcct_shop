@@ -14,7 +14,6 @@ Route::group(function () {
     //Route::get('test', 'api/wap.index/test');
 });
 
-
 Route::group(function () {
     Route::post('share/config', 'api/wechat.Index/config');
     Route::any('oauth', 'api/wechat.OAuth/index');
