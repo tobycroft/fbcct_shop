@@ -1,6 +1,6 @@
 <?php
 
-namespace Acurl;
+namespace extend\Acurl;
 
 class Acurl
 {

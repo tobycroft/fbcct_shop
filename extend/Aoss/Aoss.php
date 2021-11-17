@@ -1,6 +1,6 @@
 <?php
 
-namespace Aoss;
+namespace extend\Aoss;
 
 class Aoss
 {
