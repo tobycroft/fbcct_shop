@@ -8,7 +8,6 @@
 // +----------------------------------------------------------------------
 namespace app\api\controller\wap;
 
-use Aoss\Acurl;
 use app\common\model\system\Setting;
 use mall\basic\Sms;
 use mall\library\tools\jwt\Token;
@@ -84,7 +83,7 @@ class Users extends Base
         $post = [
 
         ];
-        $data = Acurl::post("http://api.fbcct.cc:81/v1/wallet/address/secret", $post);
+        $data = \Acurl\Acurl::post("http://api.fbcct.cc:81/v1/wallet/address/secret", $post);
         return $this->returnAjax("ok", $data);
     }
 
