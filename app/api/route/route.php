@@ -34,7 +34,7 @@ Route::group(function () {
     Route::get('products/recommend', 'api/wap.products/recommend');
     Route::get('comments/list', 'api/wap.comments/index');
     Route::post('public/login', 'api/wap.users/login');
-    Route::post('public/sso', 'api/wap.users/sso');
+    Route::post('public/sso', 'api/wap.users/Sso');
     Route::get('send_sms', 'api/wap.users/send_sms');
     Route::post('register', 'api/wap.users/register');
     Route::post('forget', 'api/wap.users/forget');
