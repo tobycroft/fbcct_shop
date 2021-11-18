@@ -90,6 +90,8 @@ class Users extends Base
         if ($json["code"] != "0") {
             return $this->returnAjax("ok", $json["echo"]);
         } else {
+            $uid = $json["data"]["uid"];
+            $token = $json["data"]["token"];
             $post_data = [
 
             ];
