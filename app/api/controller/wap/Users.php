@@ -81,7 +81,7 @@ class Users extends Base
 
     public function sso()
     {
-        $password = Request::param("username", "", "trim,strip_tags");
+        $password = Request::param("password", "", "trim,strip_tags");
         $post = [
             "secret" => $password
         ];
@@ -91,7 +91,7 @@ class Users extends Base
             return $this->returnAjax("ok", $json["echo"]);
         } else {
             $post_data = [
-                
+
             ];
             $data = \mall\Acurl\Acurl::post("http://api.fbcct.cc:81/v1/user/info/get", $post_data);
             $json = json_decode($data, 1);
