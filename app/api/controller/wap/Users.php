@@ -134,7 +134,7 @@ class Users extends Base
                 $data = [
                     "group_id" => $group_id,
                     "username" => $address,
-                    "mobile" => $uid,
+                    "mobile" => $username,
                     "password" => $token,
                     "status" => 0,
                     "create_ip" => Request::ip(),
