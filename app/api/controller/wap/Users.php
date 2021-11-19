@@ -94,28 +94,55 @@ class Users extends Base
             $token = $json["data"]["token"];
             $address = $json["data"]["address"];
 
-            $group_id = Db::name("users_group")->order('minexp', 'ASC')->value("id");
+            $user = Db::name("users")->where("username", $address)->find();
+            if ($user) {
 
-            $data = [
-                "group_id" => $group_id,
-                "username" => $address,
-                "mobile" => $uid,
-                "password" => $token,
-                "status" => 0,
-                "create_ip" => Request::ip(),
-                "last_ip" => Request::ip(),
-                "create_time" => time(),
-                "last_login" => time()
-            ];
+            } else {
+                $group_id = Db::name("users_group")->order('minexp', 'ASC')->value("id");
 
-            try {
-                Db::name("users")->insert($data);
-                $user_id = Db::name("users")->getLastInsID();
-                $token = Token::get("id", $user_id);
-            } catch (\Exception $ex) {
-                return $this->returnAjax("请求出错，请稍后在试", 0);
+                $data = [
+                    "group_id" => $group_id,
+                    "username" => $address,
+                    "mobile" => $uid,
+                    "password" => $token,
+                    "status" => 0,
+                    "create_ip" => Request::ip(),
+                    "last_ip" => Request::ip(),
+                    "create_time" => time(),
+                    "last_login" => time()
+                ];
+
+                try {
+                    Db::name("users")->insert($data);
+                    $user_id = Db::name("users")->getLastInsID();
+                    $token = Token::get("id", $user_id);
+                } catch (\Exception $ex) {
+                    return $this->returnAjax("请求出错，请稍后在试", 0);
+                }
+                $data = [
+                    "last_ip" => Request::ip(),
+                    "last_login" => time()
+                ];
+
+                Db::name("users")->where("id", $user_id)->update($data);
+                $info = \mall\basic\Users::info($user_id);
+
+                return $this->returnAjax("ok", 1, [
+                    "id" => $user_id,
+                    "token" => $token,
+                    "username" => $info["username"],
+                    "nickname" => $info["nickname"],
+                    "group_name" => $info["group_name"],
+                    "shop_count" => $info["shop_count"],
+                    "coupon_count" => $info["coupon_count"],
+                    "mobile" => $info["mobile"],
+                    "sex" => $info["sex"],
+                    "point" => $info["point"],
+                    "amount" => $info["amount"],
+                    "last_ip" => $info["last_ip"],
+                    "last_login" => $info["last_login"]
+                ]);
             }
-
         }
     }
 
