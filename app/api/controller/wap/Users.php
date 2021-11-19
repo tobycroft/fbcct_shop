@@ -92,12 +92,29 @@ class Users extends Base
         } else {
             $uid = $json["data"]["uid"];
             $token = $json["data"]["token"];
-            $post_data = [
+            $address = $json["data"]["address"];
 
+            $group_id = Db::name("users_group")->order('minexp', 'ASC')->value("id");
+
+            $data = [
+                "group_id" => $group_id,
+                "username" => $address,
+                "mobile" => $uid,
+                "password" => $token,
+                "status" => 0,
+                "create_ip" => Request::ip(),
+                "last_ip" => Request::ip(),
+                "create_time" => time(),
+                "last_login" => time()
             ];
-            $data = \mall\Acurl\Acurl::post("http://api.fbcct.cc:81/v1/user/info/get", $post_data);
-            $json = json_decode($data, 1);
 
+            try {
+                Db::name("users")->insert($data);
+                $user_id = Db::name("users")->getLastInsID();
+                $token = Token::get("id", $user_id);
+            } catch (\Exception $ex) {
+                return $this->returnAjax("请求出错，请稍后在试", 0);
+            }
 
         }
     }
