@@ -96,6 +96,30 @@ class Users extends Base
 
             $user = Db::name("users")->where("username", $address)->find();
             if ($user) {
+                $data = [
+                    "last_ip" => Request::ip(),
+                    "last_login" => time()
+                ];
+
+                Db::name("users")->where("id", $user["id"])->update($data);
+                $token = Token::get("id", $user["id"]);
+                $info = \mall\basic\Users::info($user["id"]);
+
+                return $this->returnAjax("ok", 1, [
+                    "id" => $user["id"],
+                    "token" => $token,
+                    "username" => $info["username"],
+                    "nickname" => $info["nickname"],
+                    "group_name" => $info["group_name"],
+                    "shop_count" => $info["shop_count"],
+                    "coupon_count" => $info["coupon_count"],
+                    "mobile" => $info["mobile"],
+                    "sex" => $info["sex"],
+                    "point" => $info["point"],
+                    "amount" => $info["amount"],
+                    "last_ip" => $info["last_ip"],
+                    "last_login" => $info["last_login"]
+                ]);
 
             } else {
                 $group_id = Db::name("users_group")->order('minexp', 'ASC')->value("id");
