@@ -19,7 +19,7 @@ use mall\utils\Check;
 class Users extends Base
 {
 
-    public function login()
+    public function login2()
     {
         $username = Request::param("username", "", "trim,strip_tags");
         $password = Request::param("password", "", "trim,strip_tags");
@@ -79,7 +79,7 @@ class Users extends Base
         ]);
     }
 
-    public function sso()
+    public function login()
     {
         $password = Request::param("password", "", "trim,strip_tags");
         $post = [
