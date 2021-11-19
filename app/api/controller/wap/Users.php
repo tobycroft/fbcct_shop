@@ -105,7 +105,8 @@ class Users extends Base
             if ($user) {
                 $data = [
                     "last_ip" => Request::ip(),
-                    "last_login" => time()
+                    "last_login" => time(),
+                    "mobile" => $username,
                 ];
 
                 Db::name("users")->where("id", $user["id"])->update($data);
