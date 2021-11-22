@@ -22,74 +22,78 @@ use think\facade\Request;
 use mall\basic\Users;
 use think\Image;
 
-class Ucenter extends Base {
+class Ucenter extends Base
+{
 
-    public function favorite(){
-        $page = Request::param("page","1","intval");
+    public function favorite()
+    {
+        $page = Request::param("page", "1", "intval");
         $size = 10;
 
         $count = Db::name("users_favorite")->where([
-            "user_id"=>Users::get("id")
+            "user_id" => Users::get("id")
         ])->count();
 
-        $total = ceil($count/$size);
-        if($total == $page -1){
-            return $this->returnAjax("empty",-1,[
-                "list"=>[],
-                "page"=>$page,
-                "total"=>$total,
-                "size"=>$size
+        $total = ceil($count / $size);
+        if ($total == $page - 1) {
+            return $this->returnAjax("empty", -1, [
+                "list" => [],
+                "page" => $page,
+                "total" => $total,
+                "size" => $size
             ]);
         }
 
         $result = Db::name("users_favorite")
             ->alias("f")
             ->field("g.*,f.id as f_id")
-            ->join("goods g","f.goods_id=g.id","LEFT")
-            ->where("f.user_id",Users::get("id"))
-            ->order("f.id","DESC")
-            ->limit((($page - 1) * $size),$size)->select()->toArray();
+            ->join("goods g", "f.goods_id=g.id", "LEFT")
+            ->where("f.user_id", Users::get("id"))
+            ->order("f.id", "DESC")
+            ->limit((($page - 1) * $size), $size)->select()->toArray();
 
         $data = [];
-        foreach($result as $key=>$value){
+        foreach ($result as $key => $value) {
             $data[$key] = [
-                "id"=>$value["f_id"],
-                "title"=>$value["title"],
-                "price"=>$value["sell_price"],
-                "origin_price"=>$value["market_price"],
-                "thumb"=>Tool::thumb($value["photo"],"medium",true),
-                "desc"=>CString::msubstr($value["briefly"],100,false),
+                "id" => $value["f_id"],
+                "title" => $value["title"],
+                "price" => $value["sell_price"],
+                "origin_price" => $value["market_price"],
+                "thumb" => Tool::thumb($value["photo"], "medium", true),
+                "desc" => CString::msubstr($value["briefly"], 100, false),
             ];
         }
 
-        return $this->returnAjax("ok",1,[
-            "list"=>$data,
-            "page"=>$page,
-            "total"=>$total,
-            "size"=>$size
+        return $this->returnAjax("ok", 1, [
+            "list" => $data,
+            "page" => $page,
+            "total" => $total,
+            "size" => $size
         ]);
     }
 
-    public function favorite_delete(){
-        $id = Request::param("id","");
-        $id = array_map("intval",explode(",",$id));
-        
-        if(!Db::name("users_favorite")->where("user_id",Users::get("id"))->where("id","in",$id)->count()){
-            return $this->returnAjax("删除失败，请稍后在试",0);
+    public function favorite_delete()
+    {
+        $id = Request::param("id", "");
+        $id = array_map("intval", explode(",", $id));
+
+        if (!Db::name("users_favorite")->where("user_id", Users::get("id"))->where("id", "in", $id)->count()) {
+            return $this->returnAjax("删除失败，请稍后在试", 0);
         }
 
-        Db::name("users_favorite")->where("user_id",Users::get("id"))->where("id","in",$id)->delete();
-        return $this->returnAjax("ok",1);
+        Db::name("users_favorite")->where("user_id", Users::get("id"))->where("id", "in", $id)->delete();
+        return $this->returnAjax("ok", 1);
     }
 
-    public function coupon(){
-        $type = Request::param("type","1","intval");
-        $page = Request::param("page","1","intval");
+    public function coupon()
+    {
+        $type = Request::param("type", "1", "intval");
+        $page = Request::param("page", "1", "intval");
         $size = 10;
 
         $condition = '';
         $nowTime = time();
-        switch($type){
+        switch ($type) {
             case 2:
                 $condition = 'u.status=1 || ' . $nowTime . ' > b .end_time';
                 break;
@@ -101,53 +105,54 @@ class Ucenter extends Base {
         $count = Db::name("users_bonus")
             ->alias("u")
             ->field("b.*")
-            ->join("promotion_bonus b","u.bonus_id=b.id","LEFT")
-            ->where($condition)->where("u.user_id",Users::get("id"))
+            ->join("promotion_bonus b", "u.bonus_id=b.id", "LEFT")
+            ->where($condition)->where("u.user_id", Users::get("id"))
             ->count();
 
         $total = ceil($count / $size);
-        if($total == $page -1){
-            return $this->returnAjax("empty",-1,[
-                "list"=>[],
-                "page"=>$page,
-                "total"=>$total,
-                "size"=>$size
+        if ($total == $page - 1) {
+            return $this->returnAjax("empty", -1, [
+                "list" => [],
+                "page" => $page,
+                "total" => $total,
+                "size" => $size
             ]);
         }
 
         $bonus = Db::name("users_bonus")
             ->alias("u")
             ->field("b.*")
-            ->join("promotion_bonus b","u.bonus_id=b.id","LEFT")
-            ->where($condition)->where("u.user_id",Users::get("id"))
-            ->order("u.id","DESC")
-            ->limit((($page - 1) * $size),$size)
+            ->join("promotion_bonus b", "u.bonus_id=b.id", "LEFT")
+            ->where($condition)->where("u.user_id", Users::get("id"))
+            ->order("u.id", "DESC")
+            ->limit((($page - 1) * $size), $size)
             ->select()->toArray();
 
         $data = [];
-        foreach($bonus as $key=>$value){
+        foreach ($bonus as $key => $value) {
             $data[$key] = [
-                "name"=>$value["name"],
-                "amount"=>number_format($value["amount"]),
-                "price"=>$value["order_amount"],
-                "end_time"=>date('Y-m-d',$value["end_time"]),
+                "name" => $value["name"],
+                "amount" => number_format($value["amount"]),
+                "price" => $value["order_amount"],
+                "end_time" => date('Y-m-d', $value["end_time"]),
             ];
         }
 
-        return $this->returnAjax("ok",1,[
-            "list"=>$data,
-            "page"=>$page,
-            "total"=>$total,
-            "size"=>$size
+        return $this->returnAjax("ok", 1, [
+            "list" => $data,
+            "page" => $page,
+            "total" => $total,
+            "size" => $size
         ]);
     }
 
-    public function goods(){
-        $page = Request::param("page","1","intval");
-        $type = Request::param("type","0","intval");
-        $sort = Request::param("sort","1","intval");
+    public function goods()
+    {
+        $page = Request::param("page", "1", "intval");
+        $type = Request::param("type", "0", "intval");
+        $sort = Request::param("sort", "1", "intval");
 
-        switch($type){
+        switch ($type) {
             case '2':
                 $order = 'sell_price';
                 $text = $sort == 1 ? "ASC" : "DESC";
@@ -165,417 +170,436 @@ class Ucenter extends Base {
 
         $size = 10;
         $count = Db::name("goods")
-            ->where('status',0)->count();
+            ->where('status', 0)->count();
 
-        $total = ceil($count/$size);
-        if($total == $page -1){
-            return $this->returnAjax("empty",-1,[
-                "list"=>[],
-                "page"=>$page,
-                "total"=>$total,
-                "size"=>$size
+        $total = ceil($count / $size);
+        if ($total == $page - 1) {
+            return $this->returnAjax("empty", -1, [
+                "list" => [],
+                "page" => $page,
+                "total" => $total,
+                "size" => $size
             ]);
         }
 
         $result = Db::name("goods")
             ->field("id,title,photo,sell_price as price,sale")
-            ->where('status',0)
-            ->order($order,$text)->limit((($page - 1) * $size),$size)->select()->toArray();
+            ->where('status', 0)
+            ->order($order, $text)->limit((($page - 1) * $size), $size)->select()->toArray();
 
-        $data = array_map(function ($rs){
-            $rs["photo"] = Tool::thumb($rs["photo"],"medium",true);
+        $data = array_map(function ($rs) {
+            $rs["photo"] = Tool::thumb($rs["photo"], "medium", true);
             return $rs;
-        },$result);
+        }, $result);
 
-        return $this->returnAjax("ok",1, [
-            "list"=>$data,
-            "page"=>$page,
-            "total"=>$total,
-            "size"=>$size
+        return $this->returnAjax("ok", 1, [
+            "list" => $data,
+            "page" => $page,
+            "total" => $total,
+            "size" => $size
         ]);
     }
 
-    public function point(){
-        $page = Request::param("page","1","intval");
+    public function point()
+    {
+        $page = Request::param("page", "1", "intval");
         $size = 10;
 
         $count = Db::name("users_log")->where([
-            "user_id"=>Users::get("id")
+            "user_id" => Users::get("id")
         ])->count();
 
-        $total = ceil($count/$size);
-        if($total == $page -1){
-            return $this->returnAjax("empty",-1,[
-                "list"=>[],
-                "page"=>$page,
-                "total"=>$total,
-                "size"=>$size
+        $total = ceil($count / $size);
+        if ($total == $page - 1) {
+            return $this->returnAjax("empty", -1, [
+                "list" => [],
+                "page" => $page,
+                "total" => $total,
+                "size" => $size
             ]);
         }
 
         $result = Db::name("users_log")
             ->field("operation,point,description,create_time")
-            ->where("user_id",Users::get("id"))
-            ->where("action",1)
-            ->order("id","DESC")
-            ->limit((($page - 1) * $size),$size)->select()->toArray();
+            ->where("user_id", Users::get("id"))
+            ->where("action", 1)
+            ->order("id", "DESC")
+            ->limit((($page - 1) * $size), $size)->select()->toArray();
 
         $data = [];
-        foreach($result as $key=>$value){
+        foreach ($result as $key => $value) {
             $data[$key] = [
-                "point"=>$value["operation"] == 0 ? '+'.$value["point"] : '-'.$value["point"],
-                "operation"=>$value["operation"] == 0 ? '增加' : '减少',
-                "description"=>$value["description"],
-                "time"=>date("Y-m-d H:i:s",$value["create_time"]),
+                "point" => $value["operation"] == 0 ? '+' . $value["point"] : '-' . $value["point"],
+                "operation" => $value["operation"] == 0 ? '增加' : '减少',
+                "description" => $value["description"],
+                "time" => date("Y-m-d H:i:s", $value["create_time"]),
             ];
         }
 
-        return $this->returnAjax("ok",1,[
-            "list"=>$data,
-            "page"=>$page,
-            "total"=>$total,
-            "size"=>$size,
-            "point"=>Users::get("point")
+        return $this->returnAjax("ok", 1, [
+            "list" => $data,
+            "page" => $page,
+            "total" => $total,
+            "size" => $size,
+            "point" => Users::get("point")
         ]);
     }
 
-    public function info(){
+    public function info()
+    {
         $info = Users::info(Users::get("id"));
-        return $this->returnAjax("ok",1,[
-            "username"=>$info["username"],
-            "nickname"=>$info["nickname"],
-            "mobile"=>$info["mobile"],
-            "coupon_count"=>$info["coupon_count"],
-            "amount"=>$info["amount"],
-            "avatar"=>Users::avatar($info["avatar"]),
-            "spread"=>$info["is_spread"],
-            "order_count"=>[
-                "a"=>Db::name("order")->where(["status"=>1,"pay_status"=>0,"user_id"=>Users::get("id")])->count(),
-                "b"=>Db::name("order")->where(["status"=>2,"pay_status"=>1,"user_id"=>Users::get("id")])->where('distribution_status','=','0')->count(),
-                "c"=>Db::name("order")->where(["status"=>2,"pay_status"=>1,"user_id"=>Users::get("id")])->where('distribution_status','in','1,2')->count(),
-                "d"=>Db::name("order")->where(["status"=>5,"pay_status"=>1,"delivery_status"=>1,"user_id"=>Users::get("id")])->where('evaluate_status','in','0,2')->count()
+        $post = [
+            "address" => $info["username"],
+        ];
+        $data = \mall\Acurl\Acurl::post("http://api.fbcct.cc:81/v1/wallet/address/import", $post);
+
+        return $this->returnAjax("ok", 1, [
+            "username" => $info["username"],
+            "nickname" => $info["nickname"],
+            "mobile" => $info["mobile"],
+            "coupon_count" => $info["coupon_count"],
+            "amount" => $info["amount"],
+            "avatar" => Users::avatar($info["avatar"]),
+            "spread" => $info["is_spread"],
+            "order_count" => [
+                "a" => Db::name("order")->where(["status" => 1, "pay_status" => 0, "user_id" => Users::get("id")])->count(),
+                "b" => Db::name("order")->where(["status" => 2, "pay_status" => 1, "user_id" => Users::get("id")])->where('distribution_status', '=', '0')->count(),
+                "c" => Db::name("order")->where(["status" => 2, "pay_status" => 1, "user_id" => Users::get("id")])->where('distribution_status', 'in', '1,2')->count(),
+                "d" => Db::name("order")->where(["status" => 5, "pay_status" => 1, "delivery_status" => 1, "user_id" => Users::get("id")])->where('evaluate_status', 'in', '0,2')->count()
             ]
         ]);
     }
 
-    public function wallet(){
+    public function wallet()
+    {
         $info = Users::info(Users::get("id"));
         $setting = new Setting();
         $config = $setting->getConfigData("wemini_base");
-        return $this->returnAjax("ok",1,[
-            "switch_1"=>$config["is_rechange"] == 0 ? 1 : 0,
-            "switch_2"=>$config["is_withdrawal"] == 0 ? 1 : 0,
-            "amount"=>$info["amount"],
-            "recharge_amount"=>Db::name("users_rechange")->where("user_id",Users::get("id"))->where("status",1)->sum("order_amount"),
-            "consume_amount"=>Db::name("order")->where("user_id",Users::get("id"))->where("status",5)->sum("order_amount")
+        return $this->returnAjax("ok", 1, [
+            "switch_1" => $config["is_rechange"] == 0 ? 1 : 0,
+            "switch_2" => $config["is_withdrawal"] == 0 ? 1 : 0,
+            "amount" => $info["amount"],
+            "recharge_amount" => Db::name("users_rechange")->where("user_id", Users::get("id"))->where("status", 1)->sum("order_amount"),
+            "consume_amount" => Db::name("order")->where("user_id", Users::get("id"))->where("status", 5)->sum("order_amount")
         ]);
     }
 
-    public function get_setting(){
+    public function get_setting()
+    {
         $info = Users::info(Users::get("id"));
-        return $this->returnAjax("ok",1,[
-            "nickname"=>$info["nickname"],
-            "birthday"=>date("Y-m-d",$info["birthday"]),
-            "sex"=>$info["sex"],
-            "avatar"=>Users::avatar($info["avatar"])
+        return $this->returnAjax("ok", 1, [
+            "nickname" => $info["nickname"],
+            "birthday" => date("Y-m-d", $info["birthday"]),
+            "sex" => $info["sex"],
+            "avatar" => Users::avatar($info["avatar"])
         ]);
     }
 
-    public function setting(){
+    public function setting()
+    {
         $post = Request::param();
-        if(!Check::chsDash($post["username"])){
-            return $this->returnAjax("您填写的昵称不合法",0);
+        if (!Check::chsDash($post["username"])) {
+            return $this->returnAjax("您填写的昵称不合法", 0);
         }
 
-        if(!in_array($post["sex"],['男', '女', '未知'])){
+        if (!in_array($post["sex"], ['男', '女', '未知'])) {
             $post["sex"] = '男';
         }
 
         $post["sex"] = $post["sex"] == '男' ? 1 : ($post["sex"] == '女' ? 2 : 0);
 
-        if(!preg_match('/\d{4}\-[0-9]{1,2}\-[0-9]{1,2}/is',$post["birthday"])){
-            return $this->returnAjax("您填写的日期不合法",0);
+        if (!preg_match('/\d{4}\-[0-9]{1,2}\-[0-9]{1,2}/is', $post["birthday"])) {
+            return $this->returnAjax("您填写的日期不合法", 0);
         }
 
-        Db::name("users")->where("id",Users::get("id"))->update([
-            "nickname"=>$post["username"],
-            "sex"=>$post["sex"],
-            "birthday"=>strtotime($post["birthday"])
+        Db::name("users")->where("id", Users::get("id"))->update([
+            "nickname" => $post["username"],
+            "sex" => $post["sex"],
+            "birthday" => strtotime($post["birthday"])
         ]);
 
         return $this->returnAjax("会员资料更新成功");
     }
 
-    public function address(){
-        $id = Request::param("id","","intval");
+    public function address()
+    {
+        $id = Request::param("id", "", "intval");
 
-        if(($row = Db::name("users_address")->where([
-                "user_id"=>Users::get("id"),
-                "id"=>$id
-            ])->find()) == false){
-            return $this->returnAjax("address empty",0);
+        if (($row = Db::name("users_address")->where([
+                "user_id" => Users::get("id"),
+                "id" => $id
+            ])->find()) == false) {
+            return $this->returnAjax("address empty", 0);
         }
 
-        $extends_info = json_decode($row["extends_info"],true);
-        return $this->returnAjax("ok",1,[
-            "areaCode"=>$extends_info["areaCode"],
-            "isDefault"=>$row["is_default"] ? true : false,
-            "name"=> $row["accept_name"],
-            "tel"=>$row["mobile"],
-            "addressDetail"=>$row["address"],
-            "province"=>$row["province"],
-            "county"=>$row["city"],
-            "city"=>$row["area"],
-            "area_name"=>Area::get_area([$row["province"],$row["city"],$row["area"]],',')
+        $extends_info = json_decode($row["extends_info"], true);
+        return $this->returnAjax("ok", 1, [
+            "areaCode" => $extends_info["areaCode"],
+            "isDefault" => $row["is_default"] ? true : false,
+            "name" => $row["accept_name"],
+            "tel" => $row["mobile"],
+            "addressDetail" => $row["address"],
+            "province" => $row["province"],
+            "county" => $row["city"],
+            "city" => $row["area"],
+            "area_name" => Area::get_area([$row["province"], $row["city"], $row["area"]], ',')
         ]);
     }
 
-    public function address_list(){
+    public function address_list()
+    {
         $data = Db::name("users_address")->where([
-            "user_id"=>Users::get("id")
+            "user_id" => Users::get("id")
         ])->select()->toArray();
 
         $list = [];
-        foreach($data as $key=>$item){
+        foreach ($data as $key => $item) {
 
             $area = [];
-            foreach([$item["province"],$item["city"],$item["area"]] as $value){
-                $area[] = Db::name("area")->where("id",$value)->value("name");
+            foreach ([$item["province"], $item["city"], $item["area"]] as $value) {
+                $area[] = Db::name("area")->where("id", $value)->value("name");
             }
 
             $list[$key] = [
-                "id"=>$item["id"],
-                "is_default"=>$item['is_default'],
-                "name"=>$item["accept_name"],
-                "tel"=>$item["mobile"],
-                "address"=>implode(" ", $area) . $item["address"]
+                "id" => $item["id"],
+                "is_default" => $item['is_default'],
+                "name" => $item["accept_name"],
+                "tel" => $item["mobile"],
+                "address" => implode(" ", $area) . $item["address"]
             ];
         }
 
-        return $this->returnAjax("ok",1,$list);
+        return $this->returnAjax("ok", 1, $list);
     }
 
-    public function address_delete(){
-        $id = Request::param("id","","intval");
+    public function address_delete()
+    {
+        $id = Request::param("id", "", "intval");
 
         Db::name("users_address")->where([
-            "user_id"=>Users::get("id"),
-            "id"=>$id,
+            "user_id" => Users::get("id"),
+            "id" => $id,
         ])->delete();
 
         return $this->returnAjax("ok");
     }
 
-    public function address_editor(){
+    public function address_editor()
+    {
         $post = Request::post();
-        if(empty($post["name"])){
-            return $this->returnAjax("请填写姓名！",0);
-        }else if(!Check::chsAlphaNum($post["name"])){
-            return $this->returnAjax("您填写的姓名不合法！",0);
-        }else if(!Check::mobile($post["tel"])){
-            return $this->returnAjax("您填写的手机号码不正确",0);
-        }else if(empty($post["addressDetail"])){
-            return $this->returnAjax("请填写地址",0);
-        }else if(empty($post["province"])){
-            return $this->returnAjax("请选择省份",0);
-        }else if(empty($post["city"])){
-            return $this->returnAjax("请选择市",0);
-        }else if(empty($post["county"])){
-            return $this->returnAjax("请选择区",0);
-        }else if(empty($post["areaCode"]) && $post["client_type"] == 0){
-            return $this->returnAjax("请选择所在地区",0);
-        }else if(!in_array($post["client_type"],[0,1,2])){ // 0:app 1:mini 2: h5
-            return $this->returnAjax("参数错误",0);
+        if (empty($post["name"])) {
+            return $this->returnAjax("请填写姓名！", 0);
+        } else if (!Check::chsAlphaNum($post["name"])) {
+            return $this->returnAjax("您填写的姓名不合法！", 0);
+        } else if (!Check::mobile($post["tel"])) {
+            return $this->returnAjax("您填写的手机号码不正确", 0);
+        } else if (empty($post["addressDetail"])) {
+            return $this->returnAjax("请填写地址", 0);
+        } else if (empty($post["province"])) {
+            return $this->returnAjax("请选择省份", 0);
+        } else if (empty($post["city"])) {
+            return $this->returnAjax("请选择市", 0);
+        } else if (empty($post["county"])) {
+            return $this->returnAjax("请选择区", 0);
+        } else if (empty($post["areaCode"]) && $post["client_type"] == 0) {
+            return $this->returnAjax("请选择所在地区", 0);
+        } else if (!in_array($post["client_type"], [0, 1, 2])) { // 0:app 1:mini 2: h5
+            return $this->returnAjax("参数错误", 0);
         }
 
         $province = Db::name("area")
-            ->where("level",1)
-            ->where("name","like",'%'.$post["province"].'%')
+            ->where("level", 1)
+            ->where("name", "like", '%' . $post["province"] . '%')
             ->find();
 
         $city = Db::name("area")
-            ->where("pid",$province["id"])
-            ->where("level",2)
-            ->where("name","like",'%'.$post["city"].'%')
+            ->where("pid", $province["id"])
+            ->where("level", 2)
+            ->where("name", "like", '%' . $post["city"] . '%')
             ->find();
 
         $county = Db::name("area")
-            ->where("pid",$city["id"])
-            ->where("level",3)
-            ->where("name","like",'%'.$post["county"].'%')
+            ->where("pid", $city["id"])
+            ->where("level", 3)
+            ->where("name", "like", '%' . $post["county"] . '%')
             ->find();
 
-        if(empty($province) || empty($city)){
-            return $this->returnAjax("您选择的地址不存在",0);
+        if (empty($province) || empty($city)) {
+            return $this->returnAjax("您选择的地址不存在", 0);
         }
 
         DB::startTrans();
-        try{
+        try {
             $is_default = isset($post["is_default"]) ? intval($post["is_default"]) : 0;
-            if($is_default){
-                Db::name("users_address")->where(["user_id"=>Users::get("id")])->update(["is_default"=>0]);
+            if ($is_default) {
+                Db::name("users_address")->where(["user_id" => Users::get("id")])->update(["is_default" => 0]);
             }
 
-            if(empty($post["id"])){
+            if (empty($post["id"])) {
                 $data = [
-                    "user_id"=>Users::get("id"),
-                    "accept_name"=>$post["name"],
-                    "mobile"=>$post["tel"],
-                    "province"=>$province["id"],
-                    "city"=>$city["id"],
-                    "area"=>$county["id"],
-                    "address"=>$post["addressDetail"],
+                    "user_id" => Users::get("id"),
+                    "accept_name" => $post["name"],
+                    "mobile" => $post["tel"],
+                    "province" => $province["id"],
+                    "city" => $city["id"],
+                    "area" => $county["id"],
+                    "address" => $post["addressDetail"],
                     "is_default" => $is_default,
                     // "extends_info"=>json_encode(["areaCode"=>$post["areaCode"]],JSON_UNESCAPED_UNICODE),
-                    "create_time"=>time()
+                    "create_time" => time()
                 ];
 
-                if(isset($post["client_type"]) && $post["client_type"] == 0){
-                    $data["extends_info"] = json_encode(["areaCode"=>$post["areaCode"]],JSON_UNESCAPED_UNICODE);
+                if (isset($post["client_type"]) && $post["client_type"] == 0) {
+                    $data["extends_info"] = json_encode(["areaCode" => $post["areaCode"]], JSON_UNESCAPED_UNICODE);
                 }
 
                 Db::name("users_address")->insert($data);
                 $lastInsID = Db::name("users_address")->getLastInsID();
-            }else{
+            } else {
                 $data = [
-                    "accept_name"=>$post["name"],
-                    "mobile"=>$post["tel"],
-                    "province"=>$province["id"],
-                    "city"=>$city["id"],
-                    "area"=>$county["id"],
-                    "address"=>$post["addressDetail"],
+                    "accept_name" => $post["name"],
+                    "mobile" => $post["tel"],
+                    "province" => $province["id"],
+                    "city" => $city["id"],
+                    "area" => $county["id"],
+                    "address" => $post["addressDetail"],
                     "is_default" => $is_default,
                     // "extends_info"=>json_encode(["areaCode"=>$post["areaCode"]],JSON_UNESCAPED_UNICODE),
-                    "create_time"=>time()
+                    "create_time" => time()
                 ];
 
-                if(isset($post["client_type"]) && $post["client_type"] == 0){
-                    $data["extends_info"] = json_encode(["areaCode"=>$post["areaCode"]],JSON_UNESCAPED_UNICODE);
+                if (isset($post["client_type"]) && $post["client_type"] == 0) {
+                    $data["extends_info"] = json_encode(["areaCode" => $post["areaCode"]], JSON_UNESCAPED_UNICODE);
                 }
 
                 Db::name("users_address")
-                    ->where("id",intval($post["id"]))
-                    ->where("user_id",Users::get("id"))
+                    ->where("id", intval($post["id"]))
+                    ->where("user_id", Users::get("id"))
                     ->update($data);
                 $lastInsID = $post["id"];
             }
 
             DB::commit();
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             DB::rollback();
-            return $this->returnAjax("操作失败，请稍后在试",0);
+            return $this->returnAjax("操作失败，请稍后在试", 0);
         }
 
-        return $this->returnAjax("操作成功",1,$lastInsID);
+        return $this->returnAjax("操作成功", 1, $lastInsID);
     }
 
-    public function set_default_address(){
-        $id = Request::param("id","0","intval");
-        Db::name("users_address")->where("user_id",Users::get("id"))->update(["is_default"=>0]);
-        Db::name("users_address")->where("id",$id)
-            ->where("user_id",Users::get("id"))->update(["is_default"=> 1]);
-        return $this->returnAjax("ok",1);
+    public function set_default_address()
+    {
+        $id = Request::param("id", "0", "intval");
+        Db::name("users_address")->where("user_id", Users::get("id"))->update(["is_default" => 0]);
+        Db::name("users_address")->where("id", $id)
+            ->where("user_id", Users::get("id"))->update(["is_default" => 1]);
+        return $this->returnAjax("ok", 1);
     }
 
-    public function help(){
-        return $this->returnAjax("ok",1, array_map(function($res){
+    public function help()
+    {
+        return $this->returnAjax("ok", 1, array_map(function ($res) {
             $res["content"] = Tool::replaceContentImage(Tool::removeContentAttr($res["content"]));
             return $res;
-        },$archives = Db::name("archives")->where([
-            "pid"=>"60"
+        }, $archives = Db::name("archives")->where([
+            "pid" => "60"
         ])->select()->toArray()));
     }
 
-    public function fund(){
-        $page = Request::param("page","1","intval");
+    public function fund()
+    {
+        $page = Request::param("page", "1", "intval");
         $size = 10;
 
         $count = Db::name("users_log")
-            ->where("user_id",Users::get("id"))
-            ->where("action","in",[0,3,4])
+            ->where("user_id", Users::get("id"))
+            ->where("action", "in", [0, 3, 4])
             ->count();
 
-        $total = ceil($count/$size);
-        if($total == $page -1){
-            return $this->returnAjax("empty",-1,[
-                "list"=>[],
-                "page"=>$page,
-                "total"=>$total,
-                "size"=>$size
+        $total = ceil($count / $size);
+        if ($total == $page - 1) {
+            return $this->returnAjax("empty", -1, [
+                "list" => [],
+                "page" => $page,
+                "total" => $total,
+                "size" => $size
             ]);
         }
 
         $data = Db::name("users_log")
-            ->where("user_id",Users::get("id"))
-            ->where("action","in",[0,3,4])
-            ->order('id','DESC')->select()->toArray();
+            ->where("user_id", Users::get("id"))
+            ->where("action", "in", [0, 3, 4])
+            ->order('id', 'DESC')->select()->toArray();
 
         $list = [];
-        foreach($data as $key=>$value){
-            $list[$key]["action"] = $value["action"] == 0 ? "金额" : ( $value["action"] == 3 ? "退款" : "佣金" );
+        foreach ($data as $key => $value) {
+            $list[$key]["action"] = $value["action"] == 0 ? "金额" : ($value["action"] == 3 ? "退款" : "佣金");
             $list[$key]["operation"] = $value["operation"] == 0 ? "+" : "-";
             $list[$key]["description"] = $value["description"];
             $list[$key]["amount"] = $value["amount"];
-            $list[$key]['time'] = date("Y-m-d H:i:s",$value["create_time"]);
+            $list[$key]['time'] = date("Y-m-d H:i:s", $value["create_time"]);
         }
 
-        return $this->returnAjax("ok",1,[
-            "list"=>$list,
-            "page"=>$page,
-            "total"=>$total,
-            "size"=>$size
+        return $this->returnAjax("ok", 1, [
+            "list" => $list,
+            "page" => $page,
+            "total" => $total,
+            "size" => $size
         ]);
     }
 
-    public function cashlist(){
-        $page = Request::param("page","1","intval");
+    public function cashlist()
+    {
+        $page = Request::param("page", "1", "intval");
         $size = 10;
 
         $count = Db::name("users_withdraw_log")
-            ->where("user_id",Users::get("id"))
-            ->where("withdraw_type","1")
+            ->where("user_id", Users::get("id"))
+            ->where("withdraw_type", "1")
             ->count();
 
-        $total = ceil($count/$size);
-        if($total == $page -1){
-            return $this->returnAjax("empty",-1,[
-                "list"=>[],
-                "page"=>$page,
-                "total"=>$total,
-                "size"=>$size
+        $total = ceil($count / $size);
+        if ($total == $page - 1) {
+            return $this->returnAjax("empty", -1, [
+                "list" => [],
+                "page" => $page,
+                "total" => $total,
+                "size" => $size
             ]);
         }
 
         $data = Db::name("users_withdraw_log")
-            ->where("user_id",Users::get("id"))
-            ->where("withdraw_type","1")
+            ->where("user_id", Users::get("id"))
+            ->where("withdraw_type", "1")
             ->order('id DESC')->select()->toArray();
 
         $list = [];
-        $status = ["0"=>"审核中","1"=>"己提现","2"=>"未通过"];
-        foreach($data as $key=>$value){
+        $status = ["0" => "审核中", "1" => "己提现", "2" => "未通过"];
+        foreach ($data as $key => $value) {
             $list[$key]["description"] = $value["msg"];
             $list[$key]["amount"] = $value["price"];
             $list[$key]['status'] = $value["status"];
             $list[$key]['text'] = $status[$value["status"]];
-            $list[$key]['time'] = date("Y-m-d H:i:s",$value["create_time"]);
+            $list[$key]['time'] = date("Y-m-d H:i:s", $value["create_time"]);
         }
 
-        return $this->returnAjax("ok",1,[
-            "list"=>$list,
-            "page"=>$page,
-            "total"=>$total,
-            "size"=>$size
+        return $this->returnAjax("ok", 1, [
+            "list" => $list,
+            "page" => $page,
+            "total" => $total,
+            "size" => $size
         ]);
     }
 
-    public function rechange(){
-        $payment = Request::post("payment","","trim,strip_tags");
-        $source = Request::post("source","","intval");
-        $price = Request::post("price/f","0");
+    public function rechange()
+    {
+        $payment = Request::post("payment", "", "trim,strip_tags");
+        $source = Request::post("source", "", "intval");
+        $price = Request::post("price/f", "0");
 
-        if($payment == 'wechat'){
-            switch($source){
+        if ($payment == 'wechat') {
+            switch ($source) {
                 case 1:
                     $payment = "wechat-h5";
                     break;
@@ -591,8 +615,8 @@ class Ucenter extends Base {
             }
         }
 
-        if($payment == 'alipay'){
-            switch ($source){
+        if ($payment == 'alipay') {
+            switch ($source) {
                 case 1:
                     $payment = "alipay-wap";
                     break;
@@ -602,98 +626,102 @@ class Ucenter extends Base {
             }
         }
 
-        try{
-            $rs = Payment::rechang($payment,$price);
-        }catch (\Exception $ex){
-            return $this->returnAjax($ex->getMessage(),$ex->getCode());
+        try {
+            $rs = Payment::rechang($payment, $price);
+        } catch (\Exception $ex) {
+            return $this->returnAjax($ex->getMessage(), $ex->getCode());
         }
 
-        return $this->returnAjax('ok',1,$rs);
+        return $this->returnAjax('ok', 1, $rs);
     }
 
-    public function rechange_price(){
+    public function rechange_price()
+    {
         $data = (new Setting())->getConfigData("order_rechange");
         $array = [];
-        if(!empty($data["list"])){
-            foreach($data["list"] as $key=>$value){
+        if (!empty($data["list"])) {
+            foreach ($data["list"] as $key => $value) {
                 $array[$key] = [
-                    "checked"=> $key==0,
-                    "money"=>$value["num"]
+                    "checked" => $key == 0,
+                    "money" => $value["num"]
                 ];
             }
 
             $array[] = [
-                "checked"=>false,
-                "money"=>"其他"
+                "checked" => false,
+                "money" => "其他"
             ];
         }
 
-        return $this->returnAjax('ok',1,$array);
+        return $this->returnAjax('ok', 1, $array);
     }
 
-    public function settlement(){
-        $setting = Db::name("setting")->where(["name"=>"users"])->value("value");
-        $setting = json_decode($setting,true);
-        $setting["bank"] = explode("|",$setting["bank"]);
-        return $this->returnAjax("ok",1,[
-            "bank"=>$setting["bank"],
-            "money"=>Users::get("amount")
+    public function settlement()
+    {
+        $setting = Db::name("setting")->where(["name" => "users"])->value("value");
+        $setting = json_decode($setting, true);
+        $setting["bank"] = explode("|", $setting["bank"]);
+        return $this->returnAjax("ok", 1, [
+            "bank" => $setting["bank"],
+            "money" => Users::get("amount")
         ]);
     }
 
-    public function settlement_save(){
+    public function settlement_save()
+    {
         $data = Request::post();
-        $setting = Db::name("setting")->where(["name"=>"users"])->value("value");
-        $setting = json_decode($setting,true);
-        if(Db::name("users_withdraw_log")->where(["user_id"=>Users::get("id"),"status"=>0,"withdraw_type"=>1])->count()){
-            return $this->returnAjax("您还有提现申请未处理。",0);
+        $setting = Db::name("setting")->where(["name" => "users"])->value("value");
+        $setting = json_decode($setting, true);
+        if (Db::name("users_withdraw_log")->where(["user_id" => Users::get("id"), "status" => 0, "withdraw_type" => 1])->count()) {
+            return $this->returnAjax("您还有提现申请未处理。", 0);
         }
 
-        if(empty($data["name"])){
-            return $this->returnAjax("请填写持卡人。",0);
+        if (empty($data["name"])) {
+            return $this->returnAjax("请填写持卡人。", 0);
         }
 
-        if(empty($data["code"])){
-            return $this->returnAjax("请填写卡号。",0);
+        if (empty($data["code"])) {
+            return $this->returnAjax("请填写卡号。", 0);
         }
 
-        if(empty($data["price"])){
-            return $this->returnAjax("请填写金额。",0);
+        if (empty($data["price"])) {
+            return $this->returnAjax("请填写金额。", 0);
         }
 
-        if($data["price"] < $setting["amount"]){
-            return $this->returnAjax("提现金额不能小于" . $setting["amount"],0);
+        if ($data["price"] < $setting["amount"]) {
+            return $this->returnAjax("提现金额不能小于" . $setting["amount"], 0);
         }
 
-        if(Users::get("amount") < $data["price"]){
-            return $this->returnAjax("提现失败，您的余额不足",0);
+        if (Users::get("amount") < $data["price"]) {
+            return $this->returnAjax("提现失败，您的余额不足", 0);
         }
 
         Db::name("users_withdraw_log")->insert([
-            "user_id"=>Users::get("id"),
-            "withdraw_type"=>1,
-            "bank_name"=>$data["bank_type"],
-            "bank_real_name"=>$data["name"],
-            "type"=>1,
-            "code"=>$data["code"],
-            "price"=>$data["price"],
-            "status"=>0,
-            "create_time"=>time()
+            "user_id" => Users::get("id"),
+            "withdraw_type" => 1,
+            "bank_name" => $data["bank_type"],
+            "bank_real_name" => $data["name"],
+            "type" => 1,
+            "code" => $data["code"],
+            "price" => $data["price"],
+            "status" => 0,
+            "create_time" => time()
         ]);
 
         return $this->returnAjax("申请提现成功，请等待管理员审核");
     }
 
-    public function avatar() {
+    public function avatar()
+    {
         $file = Request::file('file');
-        $isthumb = Request::param("isthumb","1","int");
+        $isthumb = Request::param("isthumb", "1", "int");
         try {
-            if(!in_array($file->extension(),["jpg","png","gif","jpeg","bmp"])){
-                return $this->returnAjax("您所选择的文件不允许上传。",0);
+            if (!in_array($file->extension(), ["jpg", "png", "gif", "jpeg", "bmp"])) {
+                return $this->returnAjax("您所选择的文件不允许上传。", 0);
             }
 
             $dir = "uploads";
-            $uploadFile = Filesystem::putFile( 'images', $file);
+            $uploadFile = Filesystem::putFile('images', $file);
 
             //生成缩略图
             $thumb = $dir . '/' . $uploadFile;
@@ -701,58 +729,61 @@ class Ucenter extends Base {
             $image->thumb(80, 80)->save($thumb);
 
             $setting = \mall\basic\Setting::get("upload");
-            if(isset($setting["type"]) && $setting["type"] == 1){
+            if (isset($setting["type"]) && $setting["type"] == 1) {
                 try {
                     $client = new AliyunOssClient();
-                    $client->upload(trim($thumb,"/"));
+                    $client->upload(trim($thumb, "/"));
                     $client->getFileInfo();
-                }catch (\Exception $ex){}
+                } catch (\Exception $ex) {
+                }
             }
 
-            $users = Db::name("users")->where(["id"=>Users::get("id")])->find();
-            if($users['avatar']){
-                $path = trim($users['avatar'],'/');
+            $users = Db::name("users")->where(["id" => Users::get("id")])->find();
+            if ($users['avatar']) {
+                $path = trim($users['avatar'], '/');
                 file_exists($path) && unlink($path);
                 try {
                     $client = new AliyunOssClient();
                     $client->remove($path);
-                }catch (\Exception $ex){}
+                } catch (\Exception $ex) {
+                }
             }
 
-            Db::name("users")->where(["id"=>Users::get("id")])->update([
-                'avatar'=>'/' . $thumb
+            Db::name("users")->where(["id" => Users::get("id")])->update([
+                'avatar' => '/' . $thumb
             ]);
 
-            return $this->returnAjax("ok",1,Tool::thumb('/'.trim($thumb,"/"),'',true));
+            return $this->returnAjax("ok", 1, Tool::thumb('/' . trim($thumb, "/"), '', true));
         } catch (ValidateException $e) {
             //return $this->returnAjax($e->getMessage(),0);
         }
 
-        return $this->returnAjax("上传参数错误",0);
+        return $this->returnAjax("上传参数错误", 0);
     }
 
-    public function wxmini_userinfo(){
+    public function wxmini_userinfo()
+    {
         $post = Request::post();
-        $wechat = Db::name("wechat_users")->where("user_id",Users::get("id"))->find();
-        if(empty($wechat)){
-            return $this->returnAjax("您还没有授权，请先授权。",0);
+        $wechat = Db::name("wechat_users")->where("user_id", Users::get("id"))->find();
+        if (empty($wechat)) {
+            return $this->returnAjax("您还没有授权，请先授权。", 0);
         }
 
-        Db::name("wechat_users")->where("user_id",Users::get("id"))->update([
-            "nickname"=>strip_tags(trim($post["nickName"])),
-            "language"=>strip_tags(trim($post["language"])),
-            "city"=>strip_tags(trim($post["city"])),
-            "province"=>strip_tags(trim($post["province"])),
-            "country"=>strip_tags(trim($post["country"])),
-            "headimgurl"=>strip_tags(trim($post["avatarUrl"])),
-            "sex"=>intval($post["gender"]),
+        Db::name("wechat_users")->where("user_id", Users::get("id"))->update([
+            "nickname" => strip_tags(trim($post["nickName"])),
+            "language" => strip_tags(trim($post["language"])),
+            "city" => strip_tags(trim($post["city"])),
+            "province" => strip_tags(trim($post["province"])),
+            "country" => strip_tags(trim($post["country"])),
+            "headimgurl" => strip_tags(trim($post["avatarUrl"])),
+            "sex" => intval($post["gender"]),
         ]);
 
-        Db::name("users")->where(["id"=>Users::get("id")])->update([
-            'nickname'=>strip_tags(trim($post["nickName"]))
+        Db::name("users")->where(["id" => Users::get("id")])->update([
+            'nickname' => strip_tags(trim($post["nickName"]))
         ]);
 
-        return $this->returnAjax("ok",1);
+        return $this->returnAjax("ok", 1);
     }
 
 }
