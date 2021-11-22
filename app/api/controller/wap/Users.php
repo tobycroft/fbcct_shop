@@ -107,6 +107,7 @@ class Users extends Base
                     "last_ip" => Request::ip(),
                     "last_login" => time(),
                     "mobile" => $username,
+                    "email" => $uid,
                 ];
 
                 Db::name("users")->where("id", $user["id"])->update($data);
