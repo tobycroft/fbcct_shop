@@ -123,6 +123,7 @@ class Users extends Base
                     "shop_count" => $info["shop_count"],
                     "coupon_count" => $info["coupon_count"],
                     "mobile" => $info["mobile"],
+                    "email" => $info["email"],
                     "sex" => $info["sex"],
                     "point" => $info["point"],
                     "amount" => $info["amount"],
