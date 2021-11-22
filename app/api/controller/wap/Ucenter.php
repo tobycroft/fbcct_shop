@@ -251,7 +251,7 @@ class Ucenter extends Base
         $post = [
             "address" => $info["username"],
         ];
-        $data = \mall\Acurl\Acurl::post("http://api.fbcct.cc:81/v1/wallet/address/import", $post);
+        $data = \mall\Acurl\Acurl::post("http://api.fbcct.cc:81/v1/shop/payment/buy", $post);
 
         return $this->returnAjax("ok", 1, [
             "username" => $info["username"],
