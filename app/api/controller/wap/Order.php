@@ -150,7 +150,7 @@ class Order extends Base
             return $this->returnAjax($e->getMessage(), $e->getCode() > 0 ? 1 : 0, $e->getCode());
         }
         $balance = \mall\fbcct\Payment::balance(Users::get("id"));
-        $data["users_price"] = Users::get("amount");
+        $data["users_price"] = $balance;
         $data["users_point"] = Users::get("point");
         return $this->returnAjax("ok", 1, $data);
     }
