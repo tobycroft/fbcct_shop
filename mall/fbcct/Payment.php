@@ -30,11 +30,7 @@ class Payment
         ];
         $data = Acurl::post("http://api.fbcct.cc:81/v1/store/payment/buy", $post);
         $json = json_decode($data, 1);
-        if ($json["code"] == "0") {
-            return $json["data"];
-        } else {
-            return "0";
-        }
+        return $json;
     }
 
     public static function refund($info, $order_id)
@@ -46,10 +42,6 @@ class Payment
         ];
         $data = Acurl::post("http://api.fbcct.cc:81/v1/store/payment/refund", $post);
         $json = json_decode($data, 1);
-        if ($json["code"] == "0") {
-            return $json["data"];
-        } else {
-            return "0";
-        }
+        return $json;
     }
 }
