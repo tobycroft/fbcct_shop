@@ -258,7 +258,7 @@ class Ucenter extends Base
             "nickname" => $info["nickname"],
             "mobile" => $info["mobile"],
             "coupon_count" => $info["coupon_count"],
-            "amount" => $data["data"],
+            "amount" => $json["data"],
             "avatar" => Users::avatar($info["avatar"]),
             "spread" => $info["is_spread"],
             "order_count" => [
