@@ -31,9 +31,9 @@ class Payment extends Base
 
         $array = [];
         $style = [
+            "balance" => ["css" => "iconfont iconxinbaniconshangchuan-", "text" => '\ue608'],
             "wechat" => ["css" => "iconfont iconweixin", "text" => '\ue673'],
             "alipay" => ["css" => "iconfont iconumidd17", "text" => '\ue603'],
-            "balance" => ["css" => "iconfont iconxinbaniconshangchuan-", "text" => '\ue608']
         ];
         foreach ($res as $value) {
             $id = explode("-", $value["code"]);
