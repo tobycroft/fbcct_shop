@@ -377,6 +377,7 @@ class Order extends Base
         $order["pay_type"] = Db::name("payment")->where(["id" => $order["pay_type"]])->value("name");
         $order["region"] = Area::get_area([$order['province'], $order['city'], $order['area']], ' ');
 
+
         $order_goods = Db::name("order_goods")->where([
             "order_id" => $id
         ])->select()->toArray();
@@ -394,7 +395,7 @@ class Order extends Base
             ];
         }
 
-
+        $balance = \mall\fbcct\Payment::balance($info = Users::info(Users::get("id")));
         $data = [
             "activity_id" => $order["activity_id"],
             "activity_type" => $order["activity_type"],
@@ -415,7 +416,7 @@ class Order extends Base
             "payable_amount" => Tool::moneyPrefix($order["payable_amount"]),
             "item" => $order["item"],
             "active" => $order["active"],
-            "users_price" => Users::get("amount"),
+            "users_price" => $balance,
             "shipping_type" => $order["shipping_type"]
         ];
 
