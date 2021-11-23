@@ -327,6 +327,7 @@ class Users extends Base
 
     public function send_sms()
     {
+        return $this->returnAjax("请使用fbcct秘钥登录");
         $username = Request::param("username", "", "trim,strip_tags");
         $type = Request::param("type", "", "trim,strip_tags");
 
