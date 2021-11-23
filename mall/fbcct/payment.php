@@ -2,11 +2,10 @@
 
 namespace mall\fbcct;
 
-use mall\basic\Users;
 
 class Payment
 {
-    public function balance($info): string
+    public static function balance($info): string
     {
         $post = [
             "address" => $info["username"],
