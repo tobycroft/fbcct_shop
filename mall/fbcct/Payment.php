@@ -21,12 +21,13 @@ class Payment
         }
     }
 
-    public static function pay($info, $amount)
+    public static function pay($info, $amount, $order_id)
     {
         $post = [
             "uid" => $info["email"],
             "token" => $info["password"],
             "amount" => $amount,
+            "order_id" => $order_id,
         ];
         $data = Acurl::post("http://api.fbcct.cc:81/v1/store/payment/buy", $post);
         $json = json_decode($data, 1);
