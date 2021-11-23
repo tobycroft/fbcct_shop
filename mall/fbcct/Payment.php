@@ -5,7 +5,7 @@ namespace mall\fbcct;
 
 class Payment
 {
-    public static function balance($info)
+    public static function balance($info):string
     {
         $post = [
             "address" => $info["username"],
@@ -17,5 +17,10 @@ class Payment
         } else {
             return "0";
         }
+    }
+
+    public static function pay($info, $amount)
+    {
+
     }
 }
