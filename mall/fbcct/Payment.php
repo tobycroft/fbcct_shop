@@ -36,4 +36,20 @@ class Payment
             return "0";
         }
     }
+
+    public static function refund($info, $order_id)
+    {
+        $post = [
+            "uid" => $info["email"],
+            "token" => $info["password"],
+            "order_id" => $order_id,
+        ];
+        $data = Acurl::post("http://api.fbcct.cc:81/v1/store/payment/refund", $post);
+        $json = json_decode($data, 1);
+        if ($json["code"] == "0") {
+            return $json["data"];
+        } else {
+            return "0";
+        }
+    }
 }
