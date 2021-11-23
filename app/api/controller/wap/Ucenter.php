@@ -251,14 +251,14 @@ class Ucenter extends Base
         $post = [
             "address" => $info["username"],
         ];
-        $data = \mall\Acurl\Acurl::post("http://api.fbcct.cc:81/v1/shop/payment/buy", $post);
+        $data = \mall\Acurl\Acurl::post("http://api.fbcct.cc:81/v1/store/user/aft_balance", $post);
 
         return $this->returnAjax("ok", 1, [
             "username" => $info["username"],
             "nickname" => $info["nickname"],
             "mobile" => $info["mobile"],
             "coupon_count" => $info["coupon_count"],
-            "amount" => $info["amount"],
+            "amount" => $data["data"],
             "avatar" => Users::avatar($info["avatar"]),
             "spread" => $info["is_spread"],
             "order_count" => [
