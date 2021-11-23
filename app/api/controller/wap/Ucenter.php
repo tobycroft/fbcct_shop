@@ -248,7 +248,7 @@ class Ucenter extends Base
     public function info()
     {
         $info = Users::info(Users::get("id"));
-        $balance = \mall\fbcct\Payment::balance($info)
+        $balance = \mall\fbcct\Payment::balance($info);
         return $this->returnAjax("ok", 1, [
             "username" => substr($info["username"], 0, 18) . "......",
             "nickname" => $info["nickname"],
