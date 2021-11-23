@@ -149,7 +149,7 @@ class Order extends Base
         } catch (\Exception $e) {
             return $this->returnAjax($e->getMessage(), $e->getCode() > 0 ? 1 : 0, $e->getCode());
         }
-        $balance = \mall\fbcct\Payment::balance(Users::get("id"));
+        $balance = \mall\fbcct\Payment::balance($info = Users::info(Users::get("id")));
         $data["users_price"] = $balance;
         $data["users_point"] = Users::get("point");
         return $this->returnAjax("ok", 1, $data);
