@@ -27,7 +27,7 @@ class Payment extends Base
             $in[] = "common";
         }
 
-        $res = Db::name("payment")->where("status", "0")->where("type", "in", $in)->order("sort", "DESC")->select()->toArray();
+        $res = Db::name("payment")->where("status", "0")->where("type", "in", $in)->order("sort", "ASC")->select()->toArray();
 
         $array = [];
         $style = [
