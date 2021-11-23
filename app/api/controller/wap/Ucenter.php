@@ -252,7 +252,7 @@ class Ucenter extends Base
             "address" => $info["username"],
         ];
         $data = \mall\Acurl\Acurl::post("http://api.fbcct.cc:81/v1/store/user/aft_balance", $post);
-
+        $json = json_decode($data, 1);
         return $this->returnAjax("ok", 1, [
             "username" => $info["username"],
             "nickname" => $info["nickname"],
