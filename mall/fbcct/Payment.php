@@ -2,6 +2,8 @@
 
 namespace mall\fbcct;
 
+use mall\Acurl\Acurl;
+
 
 class Payment
 {
@@ -10,7 +12,7 @@ class Payment
         $post = [
             "address" => $info["username"],
         ];
-        $data = \mall\Acurl\Acurl::post("http://api.fbcct.cc:81/v1/store/user/aft_balance", $post);
+        $data = Acurl::post("http://api.fbcct.cc:81/v1/store/user/aft_balance", $post);
         $json = json_decode($data, 1);
         if ($json["code"] == "0") {
             return $json["data"];
@@ -26,7 +28,7 @@ class Payment
             "token" => $info["password"],
             "amount" => $amount,
         ];
-        $data = \mall\Acurl\Acurl::post("http://api.fbcct.cc:81/v1/store/payment/buy", $post);
+        $data = Acurl::post("http://api.fbcct.cc:81/v1/store/payment/buy", $post);
         $json = json_decode($data, 1);
         if ($json["code"] == "0") {
             return $json["data"];
