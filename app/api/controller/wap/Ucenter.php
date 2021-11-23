@@ -269,12 +269,13 @@ class Ucenter extends Base
     public function wallet()
     {
         $info = Users::info(Users::get("id"));
+        $balance = \mall\fbcct\Payment::balance($info);
         $setting = new Setting();
         $config = $setting->getConfigData("wemini_base");
         return $this->returnAjax("ok", 1, [
             "switch_1" => $config["is_rechange"] == 0 ? 1 : 0,
             "switch_2" => $config["is_withdrawal"] == 0 ? 1 : 0,
-            "amount" => $info["amount"],
+            "amount" => $balance,
             "recharge_amount" => Db::name("users_rechange")->where("user_id", Users::get("id"))->where("status", 1)->sum("order_amount"),
             "consume_amount" => Db::name("order")->where("user_id", Users::get("id"))->where("status", 5)->sum("order_amount")
         ]);
