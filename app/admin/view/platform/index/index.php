@@ -3,7 +3,7 @@
 <script src="https://www.a3-mall.com/script.js"></script>
 <!-- Main content -->
 <section class="content clearfix">
-    <div id="a3mall-recommend-box"></div>
+<!--    <div id="a3mall-recommend-box"></div>-->
     <div class="row">
         <div style="padding: 10px 15px 10px 15px">
             <div class="layui-row layui-col-space15">
