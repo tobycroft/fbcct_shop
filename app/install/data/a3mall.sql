@@ -5027,11 +5027,11 @@ CREATE TABLE `mall_setting` (
 --
 
 INSERT INTO `mall_setting` (`id`, `name`, `value`) VALUES
-(1, 'web_name', '泰誉凡'),
+(1, 'web_name', 'FBCCT'),
 (2, 'web_title', '图书、母婴、美妆、家居、数码、家电、服装、鞋包等，正品低价'),
 (3, 'web_keywords', '图书、音像、母婴、美妆、家居、数码3C、服装、鞋包等几十大类，正品行货。'),
 (4, 'web_description', '网上购物，网上商城，网上买书，购物中心，在线购物，图书，影视，音像，教育音像，CD， DVD，百货，母婴，家居，家纺，厨具，化妆品，美妆，个人护理用品，数码，电脑，笔记本，u盘，手机，mp3，mp4，数码相机，摄影，摄像，家电，软件，游戏，服装，鞋，礼品箱包，钟表首饰，玩具，运动健康用品！/uploads/images/20210130/6c5ddbd74c420905e3d03cdb0c379aea.png'),
-(5, 'email', '{\"address\":\"smtp.qq.com\",\"port\":\"25\",\"username\":\"123456@qq.com\",\"password\":\"123456\",\"smtp_name\":\"泰誉凡\",\"smtp_send\":\"123456@qq.com\",\"is_ssl\":\"1\"}'),
+(5, 'email', '{\"address\":\"smtp.qq.com\",\"port\":\"25\",\"username\":\"123456@qq.com\",\"password\":\"123456\",\"smtp_name\":\"FBCCT\",\"smtp_send\":\"123456@qq.com\",\"is_ssl\":\"1\"}'),
 (6, 'store', '{\"name\":\"素烟脂\",\"intro\":\"专售店\",\"phone\":\"18026740326\",\"address\":\"城南区\",\"date_time\":\"10:00 - 18:00\"}'),
 (7, 'upload', '{\"type\":\"0\",\"protocol\":\"http\",\"endpoint\":\"oss-cn-shenzhen\",\"accessKeyId\":\"LTAI4GHdhFAB7Gh79wznSwaV\",\"accessKeySecret\":\"et2gnQZfudhwOGw2CQ3oS7BghFHDog\",\"bucket\":\"a3mall\",\"domain\":\"\"}'),
 (8, 'wechat', '{\"token\":\"omJNpZEhZeHj1ZxFECKkP48B5VFbk1HP\",\"appid\":\"wxa02e777d60d8a508\",\"appsecret\":\"339c1f55c2089f46f50316b6f7c9f71b\",\"enaes_key\":\"\"}'),
