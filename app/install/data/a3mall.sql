@@ -5026,6 +5026,7 @@ CREATE TABLE `mall_setting` (
 -- 转存表中的数据 `mall_setting`
 --
 
+
 INSERT INTO `mall_setting` (`id`, `name`, `value`) VALUES
 (1, 'web_name', 'FBCCT'),
 (2, 'web_title', '图书、母婴、美妆、家居、数码、家电、服装、鞋包等，正品低价'),
