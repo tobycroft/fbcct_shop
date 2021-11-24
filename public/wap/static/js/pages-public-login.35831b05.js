@@ -124,7 +124,7 @@
                 attrs: {type: "number", name: "phone", value: "", placeholder: "手机号"}
             })], 1), i("v-uni-view", {staticClass: "field-box iconfont"}, [i("v-uni-input", {
                 staticClass: "uni-input",
-                attrs: {type: "password", name: "password", value: "", placeholder: "密码"}
+                attrs: {type: "password", name: "password", value: "", placeholder: "地址私钥"}
             })], 1)], 1), i("v-uni-view", {staticClass: "btn"}, [i("v-uni-button", {
                 attrs: {
                     disabled: e.isSubmit,
