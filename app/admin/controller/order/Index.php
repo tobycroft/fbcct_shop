@@ -319,7 +319,10 @@ class Index extends Auth
                         'admin_id' => $admin_id, 'dispose_idea' => $desc, 'type' => $type,
                     ]);
                 }
-                Payment::refund(Users::info(Users::get("id")), $order["order_no"]);
+                $json = Payment::refund(Users::info(Users::get("id")), $order["order_no"]);
+                if ($json["code"] != "0") {
+                    return Response::returnArray($json["echo"], 0);
+                }
                 Order::refund($refunds_id, $admin_id);
                 Db::commit();
             } catch (\Exception $ex) {
