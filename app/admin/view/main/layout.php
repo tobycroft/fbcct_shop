@@ -129,8 +129,6 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> {$Think.config.version.version}
         </div>
-        <strong>Copyright &copy; 2019-<?php echo date("Y"); ?> <a href="http://www.a3-mall.com">数循通云计算科技有限公司 | Fbcct</a>.</strong> All rights
-        reserved.
     </footer>
 
 </div>
