@@ -27,7 +27,7 @@ class Payment
             "uid" => $info["email"],
             "token" => $info["password"],
             "amount" => $amount,
-            "order_id" => $order_no,
+            "order_no" => $order_no,
             "remark" => $remark,
         ];
         $data = Acurl::post("http://api.fbcct.cc:81/v1/store/payment/buy", $post);
@@ -35,12 +35,24 @@ class Payment
         return $json;
     }
 
-    public static function refund($info, $order_id)
+    public static function refund($info, $order_no)
     {
         $post = [
             "uid" => $info["email"],
             "token" => $info["password"],
-            "order_id" => $order_id,
+            "order_no" => $order_no,
+        ];
+        $data = Acurl::post("http://api.fbcct.cc:81/v1/store/payment/refund", $post);
+        $json = json_decode($data, 1);
+        return $json;
+    }
+
+    public static function done($info, $order_no)
+    {
+        $post = [
+            "uid" => $info["email"],
+            "token" => $info["password"],
+            "order_no" => $order_no,
         ];
         $data = Acurl::post("http://api.fbcct.cc:81/v1/store/payment/refund", $post);
         $json = json_decode($data, 1);

@@ -237,6 +237,8 @@ class Order {
             Subscribe::orderComplete($user["mp_openid"],$order["id"]);
         }
 
+        \mall\fbcct\Payment::refund()
+
         return true;
     }
 
