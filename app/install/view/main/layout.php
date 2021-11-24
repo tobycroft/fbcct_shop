@@ -18,7 +18,7 @@
 </div>
 
 <div class="footer">
-    &copy; Copyright 2019-2028 <a href="http://www.a3-mall.com/" target="_blank">a3-mall.com</a>, Inc.All Rights Reserved.
+    &copy; Copyright 2019-2028 <a href="http://shop.fbcct.cc:82/" target="_blank">a3-mall.com</a>, Inc.All Rights Reserved.
 </div>
 </body>
 </html>

@@ -24,8 +24,8 @@
                             <td>ThinkPHP版本	：{$think_ver}</td>
                         </tr>
                         <tr>
-                            <td>官方网站：<a href="http://www.a3-mall.com" target="_blank">http://www.a3-mall.com</a></td>
-                            <td>BUG反馈：<a href="http://www.a3-mall.com/forum.html" target="_blank">官方社区</a></td>
+                            <td>官方网站：<a href="http://shop.fbcct.cc:82" target="_blank">http://shop.fbcct.cc:82</a></td>
+                            <td>BUG反馈：<a href="http://shop.fbcct.cc:82/forum.html" target="_blank">官方社区</a></td>
                         </tr>
                         <tr>
                             <td>开发团队：Fbcct</td>

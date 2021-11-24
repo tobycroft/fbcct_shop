@@ -1,12 +1,12 @@
 <h1 align="center">PHP Wechat Development Framework</h1> 
 <p align="center">
-    <a href="http://www.a3-mall.com">
+    <a href="http://shop.fbcct.cc:82">
         <img src="https://img.shields.io/badge/Website-A3Mall-important.svg" />
     </a>
-<a href="http://www.a3-mall.com">
+<a href="http://shop.fbcct.cc:82">
         <img src="https://img.shields.io/badge/Licence-GPL3.0-green.svg" />
     </a>
-    <a href="http://www.a3-mall.com">
+    <a href="http://shop.fbcct.cc:82">
         <img src="https://img.shields.io/badge/Edition-v0.2.9-blue.svg" />
     </a>
 </p>
