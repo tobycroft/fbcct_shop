@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | A3Mall
+// | Fbcct
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://www.a3-mall.com All rights reserved.
 // +----------------------------------------------------------------------
@@ -9,9 +9,9 @@
 
 namespace app\common\model\statistics;
 
-use app\common\model\base\A3Mall;
+use app\common\model\base\Fbcct;
 
-class SearchKeywords extends A3Mall{
+class SearchKeywords extends Fbcct{
 
     protected $name = "search_keywords";
 

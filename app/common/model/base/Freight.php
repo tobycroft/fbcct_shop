@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | A3Mall
+// | Fbcct
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://www.a3-mall.com All rights reserved.
 // +----------------------------------------------------------------------
@@ -9,7 +9,7 @@
 
 namespace app\common\model\base;
 
-class Freight extends A3Mall{
+class Freight extends Fbcct{
 
     protected $type = [
         "id"=>"integer",

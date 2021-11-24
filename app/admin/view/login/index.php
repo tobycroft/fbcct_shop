@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>A3Mall | Dashboard</title>
+    <title>Fbcct | Dashboard</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="{__SYSTEM_PATH__}/js/bootstrap/css/bootstrap.min.css">
     <script src="{__SYSTEM_PATH__}/js/jquery/jquery.min.js"></script>
@@ -49,14 +49,14 @@
 
     <div id="header">
         <div class="wrap">
-            <h1>A3Mall</h1>
+            <h1>Fbcct</h1>
         </div>
     </div>
 
     <div id="main">
         <div class="wrap">
             <div class="form-box">
-                <div class="form-tips">欢迎使用A3Mall商城系统！</div>
+                <div class="form-tips">欢迎使用Fbcct商城系统！</div>
                 <form id="theForm" method="post">
                     <div class="form-fields">
                         <input type="text" name="username" placeholder="用户名" autocomplete="off">

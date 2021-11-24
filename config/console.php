@@ -5,6 +5,6 @@
 return [
     // 指令定义
     'commands' => [
-        'task'=>'mall\command\A3Mall'
+        'task'=>'mall\command\Fbcct'
     ],
 ];

@@ -113,7 +113,7 @@
                     title: "",
                     onBack: e.onBack
                 }
-            }), "app" != e.platform.type && "h5" != e.platform.type || e.platform.isWechat ? e._e() : i("v-uni-view", {staticClass: "app"}, [i("v-uni-view", {staticClass: "top"}, [i("v-uni-view", [e._v("A3Mall")]), i("v-uni-view", [e._v("FBCCT")])], 1), i("v-uni-view", {staticClass: "theform"}, [i("v-uni-form", {
+            }), "app" != e.platform.type && "h5" != e.platform.type || e.platform.isWechat ? e._e() : i("v-uni-view", {staticClass: "app"}, [i("v-uni-view", {staticClass: "top"}, [i("v-uni-view", [e._v("Fbcct")]), i("v-uni-view", [e._v("FBCCT")])], 1), i("v-uni-view", {staticClass: "theform"}, [i("v-uni-form", {
                 on: {
                     submit: function (t) {
                         arguments[0] = t = e.$handleEvent(t), e.onSubmit.apply(void 0, arguments)

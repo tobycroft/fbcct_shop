@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | A3Mall
+// | Fbcct
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://www.a3-mall.com All rights reserved.
 // +----------------------------------------------------------------------
@@ -14,7 +14,7 @@ use app\common\model\goods\GoodsAttribute;
 use app\common\model\goods\GoodsItem;
 use mall\utils\Tool;
 
-class Cart extends A3Mall {
+class Cart extends Fbcct {
 
     public function getList($condition=[],$size=10,$page=1){
         $count = $this->where($condition)->count();

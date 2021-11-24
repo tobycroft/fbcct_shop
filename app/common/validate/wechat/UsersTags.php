@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | A3Mall
+// | Fbcct
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://www.a3-mall.com All rights reserved.
 // +----------------------------------------------------------------------
@@ -8,9 +8,9 @@
 // +----------------------------------------------------------------------
 namespace app\common\validate\wechat;
 
-use app\common\validate\base\A3Mall;
+use app\common\validate\base\Fbcct;
 
-class UsersTags extends A3Mall {
+class UsersTags extends Fbcct {
 
 
 

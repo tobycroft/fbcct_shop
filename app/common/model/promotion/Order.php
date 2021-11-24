@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | A3Mall
+// | Fbcct
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://www.a3-mall.com All rights reserved.
 // +----------------------------------------------------------------------
@@ -8,10 +8,10 @@
 // +----------------------------------------------------------------------
 namespace app\common\model\promotion;
 
-use app\common\model\base\A3Mall;
+use app\common\model\base\Fbcct;
 use mall\utils\Tool;
 
-class Order extends A3Mall {
+class Order extends Fbcct {
 
     protected $name = "promotion_order";
 

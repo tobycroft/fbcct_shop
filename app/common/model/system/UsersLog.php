@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | A3Mall
+// | Fbcct
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://www.a3-mall.com All rights reserved.
 // +----------------------------------------------------------------------
@@ -9,10 +9,10 @@
 
 namespace app\common\model\system;
 
-use app\common\model\base\A3Mall;
+use app\common\model\base\Fbcct;
 use mall\utils\Tool;
 
-class UsersLog extends A3Mall{
+class UsersLog extends Fbcct{
 
     protected $name = "system_users_log";
 

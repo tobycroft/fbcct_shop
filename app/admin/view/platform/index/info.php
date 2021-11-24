@@ -28,8 +28,8 @@
                             <td>BUG反馈：<a href="http://www.a3-mall.com/forum.html" target="_blank">官方社区</a></td>
                         </tr>
                         <tr>
-                            <td>开发团队：A3Mall</td>
-                            <td>官方QQ群：<a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=lBxucAil6e6WTlwX0tNvQwpOtfLP2ptd&jump_from=webapi"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="A3Mall官方交流1群" title="A3Mall官方交流1群"></a></td>
+                            <td>开发团队：Fbcct</td>
+                            <td>官方QQ群：<a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=lBxucAil6e6WTlwX0tNvQwpOtfLP2ptd&jump_from=webapi"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="Fbcct官方交流1群" title="Fbcct官方交流1群"></a></td>
                         </tr>
                         </tbody>
                     </table>

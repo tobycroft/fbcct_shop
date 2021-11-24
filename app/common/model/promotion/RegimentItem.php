@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | A3Mall
+// | Fbcct
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://www.a3-mall.com All rights reserved.
 // +----------------------------------------------------------------------
@@ -9,9 +9,9 @@
 
 namespace app\common\model\promotion;
 
-use app\common\model\base\A3Mall;
+use app\common\model\base\Fbcct;
 
-class RegimentItem extends A3Mall {
+class RegimentItem extends Fbcct {
 
     protected $name = "promotion_regiment_item";
     

@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | A3Mall
+// | Fbcct
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://www.a3-mall.com All rights reserved.
 // +----------------------------------------------------------------------
@@ -9,7 +9,7 @@
 
 namespace app\common\validate\base;
 
-class Version extends A3Mall{
+class Version extends Fbcct{
 
 
 }

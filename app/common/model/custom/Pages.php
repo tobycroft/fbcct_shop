@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | A3Mall
+// | Fbcct
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://www.a3-mall.com All rights reserved.
 // +----------------------------------------------------------------------
@@ -9,7 +9,7 @@
 
 namespace app\common\model\custom;
 
-use app\common\model\base\A3Mall;
+use app\common\model\base\Fbcct;
 use app\common\model\base\Archives;
 use app\common\model\base\Category;
 use app\common\model\goods\Goods;
@@ -20,7 +20,7 @@ use app\common\model\promotion\Second;
 use mall\utils\Tool;
 use think\facade\Db;
 
-class Pages extends A3Mall{
+class Pages extends Fbcct{
 
     protected $type = [
         "id"=>"integer",

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>A3Mall | Dashboard</title>
+    <title>Fbcct | Dashboard</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="{__SYSTEM_PATH__}/js/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="{__SYSTEM_PATH__}/font/font-awesome/css/font-awesome.min.css">
@@ -47,7 +47,7 @@
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A3</b></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>A3Mall</b></span>
+            <span class="logo-lg"><b>Fbcct</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -115,7 +115,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> {$Think.config.version.version}
         </div>
-        <strong>Copyright &copy; 2019-<?php echo date("Y"); ?> <a href="http://www.a3-mall.com">数循通云计算科技有限公司 | A3Mall</a>.</strong> All rights
+        <strong>Copyright &copy; 2019-<?php echo date("Y"); ?> <a href="http://www.a3-mall.com">数循通云计算科技有限公司 | Fbcct</a>.</strong> All rights
         reserved.
     </footer>
 

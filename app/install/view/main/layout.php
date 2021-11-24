@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{__INSTALL_PATH__}/css/style.css">
     <script type="text/javascript" src="{__INSTALL_PATH__}/js/jquery.min.js"></script>
-    <title>A3Mall 安装向导</title>
+    <title>Fbcct 安装向导</title>
 </head>
 <body>
 <div class="wrap">

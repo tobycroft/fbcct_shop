@@ -4159,7 +4159,7 @@ CREATE TABLE `mall_deliver` (
 --
 
 INSERT INTO `mall_deliver` (`id`, `title`, `username`, `company`, `country`, `province`, `city`, `area`, `zip`, `address`, `mobile`, `phone`, `is_default`, `note`) VALUES
-(1, '深圳发货点', '森森', 'A3Mall', NULL, 1964, 1988, 1989, '518000', '源城区6号', '18026740326', '', 1, NULL);
+(1, '深圳发货点', '森森', 'Fbcct', NULL, 1964, 1988, 1989, '518000', '源城区6号', '18026740326', '', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -5053,9 +5053,9 @@ INSERT INTO `mall_setting` (`id`, `name`, `value`) VALUES
 (27, 'is_shipping', '1'),
 (28, 'web_logo', '/uploads/images/20210629/17153cb3e3f841b672b9edbe0af37702.png'),
 (29, 'web_copyright', 'Copyright 2020-2021 A3MALL. All Rights Reserved.'),
-(30, 'share', '{\"share_title\":\"A3Mall\",\"share_url\":\"http:\\/\\/a3-mall.com\",\"share_content\":\"分享购物\",\"file\":\"\",\"share\":[{\"attachment_id\":\"155\",\"name\":\"\",\"photo\":\"\\/uploads\\/images\\/20210702\\/17d8a9df063226d14541887ee2d6d0a8.jpg\"},{\"attachment_id\":\"156\",\"name\":\"\",\"photo\":\"\\/uploads\\/images\\/20210702\\/c639a97f228ba383dd01fa3e9983bd14.jpg\"},{\"attachment_id\":\"157\",\"name\":\"\",\"photo\":\"\\/uploads\\/images\\/20210702\\/28726dfadec86bd20792675253f58f4c.png\"}]}'),
+(30, 'share', '{\"share_title\":\"Fbcct\",\"share_url\":\"http:\\/\\/a3-mall.com\",\"share_content\":\"分享购物\",\"file\":\"\",\"share\":[{\"attachment_id\":\"155\",\"name\":\"\",\"photo\":\"\\/uploads\\/images\\/20210702\\/17d8a9df063226d14541887ee2d6d0a8.jpg\"},{\"attachment_id\":\"156\",\"name\":\"\",\"photo\":\"\\/uploads\\/images\\/20210702\\/c639a97f228ba383dd01fa3e9983bd14.jpg\"},{\"attachment_id\":\"157\",\"name\":\"\",\"photo\":\"\\/uploads\\/images\\/20210702\\/28726dfadec86bd20792675253f58f4c.png\"}]}'),
 (31, 'order_rechange', '{\"list\":[{\"num\":\"10\"},{\"num\":\"50\"},{\"num\":\"100\"}]}'),
-(32, 'address', '{\"name\":\"A3Mall\",\"full_name\":\"黄超\",\"mobile\":\"18026740326\",\"phone\":\"\",\"address\":\"广东省 深圳 罗湖区源城6号\"}'),
+(32, 'address', '{\"name\":\"Fbcct\",\"full_name\":\"黄超\",\"mobile\":\"18026740326\",\"phone\":\"\",\"address\":\"广东省 深圳 罗湖区源城6号\"}'),
 (33, 'service', '{\"type\":0}'),
 (34, 'luckdraw', '{\"luckdraw\":{\"point\":\"20\",\"type\":\"1\",\"num\":\"3\",\"data\":{\"id\":[\"61\",\"62\",\"63\",\"64\",\"65\",\"66\",\"67\",\"68\"],\"attachment_id\":[\"185\",\"193\",\"187\",\"194\",\"189\",\"195\",\"191\",\"196\"],\"photo\":[\"\\/uploads\\/images\\/20210705\\/3fa4015765248e68101f90a6e80c94e6.png\",\"\\/uploads\\/images\\/20210705\\/458fab1af868de74fe6d9a1b69b8957d.png\",\"\\/uploads\\/images\\/20210705\\/c08c04e0b912d6d35fbdedb172f30b71.png\",\"\\/uploads\\/images\\/20210705\\/c36c6a55d48b2b1cfa3a527d4c47bba4.png\",\"\\/uploads\\/images\\/20210705\\/fbe14f1dfb5bfd0b4ca8e7c8fa150f18.png\",\"\\/uploads\\/images\\/20210705\\/bba4fc120a2f4613df7b82e5e7e10111.png\",\"\\/uploads\\/images\\/20210705\\/ee9c1f7bb55f7cf6dcdf3bcded43c774.png\",\"\\/uploads\\/images\\/20210705\\/6e0e6e0325ebeef5f1c0dbd75417e9f4.png\"],\"name\":[\"5积分\",\"谢谢参与\",\"10积分\",\"谢谢参与\",\"15积分\",\"谢谢参与\",\"20积分\",\"谢谢参与\"],\"type\":[\"1\",\"0\",\"1\",\"0\",\"1\",\"0\",\"1\",\"0\"],\"value\":[\"5\",\"0\",\"10\",\"0\",\"15\",\"0\",\"20\",\"20\"],\"num\":[\"997\",\"1000\",\"999\",\"1000\",\"1000\",\"1000\",\"999\",\"1000\"],\"chance\":[\"50\",\"50\",\"50\",\"50\",\"5\",\"1\",\"50\",\"35\"]},\"content\":\"<p>1. 成功登录后，每人每天有3次抽奖机会<\\/p>\\n<p>2. 积分可以在购买商品时获取<\\/p>\\n<p>3. 抽奖活动将在每日凌晨0点刷新<\\/p>\\n<p>4. 每次抽奖需要消耗20积分<\\/p>\\n<p>5. 本次活动与苹果公司无关<\\/p>\",\"status\":\"0\"}}');
 
