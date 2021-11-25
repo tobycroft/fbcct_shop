@@ -84,9 +84,9 @@ class Payment
 
         switch ($payment["code"]) {
             case "balance":
-                if ($order["order_amount"] > $users["amount"]) {
-                    throw new \Exception("您的余额不足，请充值。", 0);
-                }
+//                if ($order["order_amount"] > $users["amount"]) {
+//                    throw new \Exception("您的余额不足，请充值。", 0);
+//                }
                 $info = Users::info(Users::get("id"));
                 Db::startTrans();
                 try {
