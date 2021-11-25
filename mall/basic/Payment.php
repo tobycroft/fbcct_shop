@@ -105,7 +105,7 @@ class Payment
                         'create_time' => time()
                     ]);
                     $pay_ret = \mall\fbcct\Payment::pay($info, $order["order_amount"], $order["order_no"], $order["remarks"]);
-                    if ($pay_ret["code" == "0"]) {
+                    if ($pay_ret["code"] == "0") {
                         Db::commit();
                     } else {
                         Db::rollback();
