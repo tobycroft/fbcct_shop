@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 namespace app\common\model\statistics;
 
-use app\common\model\base\A3Mall;
+use app\common\model\base\Fbcct;
 
 class Search extends Fbcct {
 

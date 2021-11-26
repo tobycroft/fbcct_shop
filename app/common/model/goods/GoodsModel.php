@@ -9,7 +9,7 @@
 
 namespace app\common\model\goods;
 
-use app\common\model\base\A3Mall;
+use app\common\model\base\Fbcct;
 
 class GoodsModel extends Fbcct {
 

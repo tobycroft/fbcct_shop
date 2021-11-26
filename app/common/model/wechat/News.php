@@ -9,7 +9,7 @@
 
 namespace app\common\model\wechat;
 
-use app\common\model\base\A3Mall;
+use app\common\model\base\Fbcct;
 
 class News extends Fbcct{
 

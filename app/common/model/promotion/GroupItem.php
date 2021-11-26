@@ -9,7 +9,7 @@
 
 namespace app\common\model\promotion;
 
-use app\common\model\base\A3Mall;
+use app\common\model\base\Fbcct;
 
 class GroupItem extends Fbcct {
 

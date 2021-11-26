@@ -9,7 +9,7 @@
 
 namespace app\common\model\order;
 
-use app\common\model\base\A3Mall;
+use app\common\model\base\Fbcct;
 use app\common\model\base\Freight;
 use app\common\model\users\Users;
 

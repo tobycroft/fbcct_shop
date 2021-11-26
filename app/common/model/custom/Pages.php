@@ -9,7 +9,7 @@
 
 namespace app\common\model\custom;
 
-use app\common\model\base\A3Mall;
+use app\common\model\base\Fbcct;
 use app\common\model\base\Archives;
 use app\common\model\base\Category;
 use app\common\model\goods\Goods;
