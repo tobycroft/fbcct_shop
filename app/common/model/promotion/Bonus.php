@@ -9,7 +9,7 @@
 
 namespace app\common\model\promotion;
 
-use app\common\model\base\Fbcct;
+use app\common\model\base\A3Mall;
 
 class Bonus extends Fbcct{
 

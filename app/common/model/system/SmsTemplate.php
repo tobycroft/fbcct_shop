@@ -9,7 +9,7 @@
 
 namespace app\common\model\system;
 
-use app\common\model\base\Fbcct;
+use app\common\model\base\A3Mall;
 use mall\utils\Tool;
 
 class SmsTemplate extends Fbcct{

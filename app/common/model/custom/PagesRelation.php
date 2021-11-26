@@ -9,7 +9,7 @@
 
 namespace app\common\model\custom;
 
-use app\common\model\base\Fbcct;
+use app\common\model\base\A3Mall;
 
 class PagesRelation extends Fbcct {
 
