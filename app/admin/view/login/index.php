@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    <div class="copyright">Copyright 2020-<?php echo date("Y"); ?> <a href="http://shop.fbcct.cc:82/" target="_blank">A3MALL</a>. All Rights Reserved.</div>
+    <div class="copyright">Copyright 2020-<?php echo date("Y"); ?> <a href="http://shop.fbcct.cc:82/" target="_blank">-FBCCT-</a>. All Rights Reserved.</div>
     <script type="text/javascript">
         $('[name="username"]').focus();
         layui.use(["layer"],function(){

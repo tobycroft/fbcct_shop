@@ -5052,7 +5052,7 @@ INSERT INTO `mall_setting` (`id`, `name`, `value`) VALUES
 (26, 'users_rule', '<p><span style=\"color: rgb(34, 34, 34); font-family: Menlo, monospace; font-size: 11px; white-space: pre-wrap; background-color: rgb(255, 255, 255);\">连续签到第七天可获得双倍积分，记得每天回来签到哦！</span></p>'),
 (27, 'is_shipping', '1'),
 (28, 'web_logo', '/uploads/images/20210629/17153cb3e3f841b672b9edbe0af37702.png'),
-(29, 'web_copyright', 'Copyright 2020-2021 A3MALL. All Rights Reserved.'),
+(29, 'web_copyright', 'Copyright 2020-2021 -FBCCT-. All Rights Reserved.'),
 (30, 'share', '{\"share_title\":\"Fbcct\",\"share_url\":\"http:\\/\\/a3-mall.com\",\"share_content\":\"分享购物\",\"file\":\"\",\"share\":[{\"attachment_id\":\"155\",\"name\":\"\",\"photo\":\"\\/uploads\\/images\\/20210702\\/17d8a9df063226d14541887ee2d6d0a8.jpg\"},{\"attachment_id\":\"156\",\"name\":\"\",\"photo\":\"\\/uploads\\/images\\/20210702\\/c639a97f228ba383dd01fa3e9983bd14.jpg\"},{\"attachment_id\":\"157\",\"name\":\"\",\"photo\":\"\\/uploads\\/images\\/20210702\\/28726dfadec86bd20792675253f58f4c.png\"}]}'),
 (31, 'order_rechange', '{\"list\":[{\"num\":\"10\"},{\"num\":\"50\"},{\"num\":\"100\"}]}'),
 (32, 'address', '{\"name\":\"Fbcct\",\"full_name\":\"黄超\",\"mobile\":\"18026740326\",\"phone\":\"\",\"address\":\"广东省 深圳 罗湖区源城6号\"}'),
