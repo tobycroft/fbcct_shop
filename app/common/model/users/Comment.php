@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | Fbcct
+// | A3Mall
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://shop.fbcct.cc:82 All rights reserved.
 // +----------------------------------------------------------------------
@@ -9,11 +9,11 @@
 
 namespace app\common\model\users;
 
-use app\common\model\base\Fbcct;
+use app\common\model\base\A3Mall;
 use app\common\model\goods\Goods;
 use mall\utils\Tool;
 
-class Comment extends Fbcct{
+class Comment extends A3Mall{
 
     protected $name = "users_comment";
 

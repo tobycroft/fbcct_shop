@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | Fbcct
+// | A3Mall
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://shop.fbcct.cc:82 All rights reserved.
 // +----------------------------------------------------------------------
@@ -9,10 +9,10 @@
 
 namespace app\common\model\custom;
 
-use app\common\model\base\Fbcct;
+use app\common\model\base\A3Mall;
 use mall\utils\Tool;
 
-class PagesWidget extends Fbcct {
+class PagesWidget extends A3Mall {
 
     protected $type = [
         "id"=>"integer",

@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | Fbcct
+// | A3Mall
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://shop.fbcct.cc:82 All rights reserved.
 // +----------------------------------------------------------------------
@@ -11,7 +11,7 @@ namespace app\common\model\base;
 
 use mall\utils\Tool;
 
-class Version extends Fbcct{
+class Version extends A3Mall{
 
     public function getList($condition=[],$size=10,$page=1){
         $count = $this->where($condition)->count();

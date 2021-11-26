@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | Fbcct
+// | A3Mall
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://shop.fbcct.cc:82 All rights reserved.
 // +----------------------------------------------------------------------
@@ -10,7 +10,7 @@ namespace app\common\model\base;
 
 use think\Model;
 
-class Fbcct extends Model {
+class A3Mall extends Model {
 
     public function family_process($data,$res=[],$pid='0',$level=1){
         foreach($data as $item){

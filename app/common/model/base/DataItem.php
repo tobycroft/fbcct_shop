@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | Fbcct
+// | A3Mall
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://shop.fbcct.cc:82 All rights reserved.
 // +----------------------------------------------------------------------
@@ -9,7 +9,7 @@
 
 namespace app\common\model\base;
 
-class DataItem extends Fbcct{
+class DataItem extends A3Mall{
 
     protected $type = [
         "id"=>"integer",

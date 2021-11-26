@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | Fbcct
+// | A3Mall
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://shop.fbcct.cc:82 All rights reserved.
 // +----------------------------------------------------------------------
@@ -9,9 +9,9 @@
 
 namespace app\common\model\order;
 
-use app\common\model\base\Fbcct;
+use app\common\model\base\A3Mall;
 
-class Log extends Fbcct{
+class Log extends A3Mall{
 
     protected $name = "order_log";
 

@@ -1,6 +1,6 @@
 <?php
 // +----------------------------------------------------------------------
-// | Fbcct
+// | A3Mall
 // +----------------------------------------------------------------------
 // | Copyright (c) 2020 http://shop.fbcct.cc:82 All rights reserved.
 // +----------------------------------------------------------------------
@@ -9,11 +9,11 @@
 
 namespace app\common\model\products;
 
-use app\common\model\base\Fbcct;
+use app\common\model\base\A3Mall;
 
 use mall\utils\Tool;
 
-class Brand extends Fbcct{
+class Brand extends A3Mall{
 
     protected $name = "products_brand";
 
