@@ -713,7 +713,6 @@ class Ucenter extends Base
     {
         $file = Request::file('file');
         return $this->returnAjax("上传参数错误", 0);
-
 //        $isthumb = Request::param("isthumb", "1", "int");
         try {
             if (!in_array($file->extension(), ["jpg", "png", "gif", "jpeg", "bmp"])) {
