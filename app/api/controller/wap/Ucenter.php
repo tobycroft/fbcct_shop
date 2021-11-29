@@ -709,11 +709,10 @@ class Ucenter extends Base
         return $this->returnAjax("申请提现成功，请等待管理员审核");
     }
 
-    public function avatar()
+    public function avatars()
     {
-        return $this->returnAjax("上传参数错误", 0);
         $file = Request::file('file');
-//        $isthumb = Request::param("isthumb", "1", "int");
+        $isthumb = Request::param("isthumb", "1", "int");
         try {
             if (!in_array($file->extension(), ["jpg", "png", "gif", "jpeg", "bmp"])) {
                 return $this->returnAjax("您所选择的文件不允许上传。", 0);
@@ -726,9 +725,7 @@ class Ucenter extends Base
             $thumb = $dir . '/' . $uploadFile;
             $image = Image::open($thumb);
             $nm = $image->thumb(80, 80)->save($thumb);
-           $ret= Aoss::send_file($thumb, $image->mime());
-            print_r($ret);
-            die();
+            $ret = Aoss::send_file($thumb, $image->mime());
 
             $setting = \mall\basic\Setting::get("upload");
             if (isset($setting["type"]) && $setting["type"] == 1) {
