@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6016872691af8a5dc44744488be72ad8",
+    "content-hash": "88bbdaab5c68b63e978f41141946b96d",
     "packages": [
         {
             "name": "adbario/php-dot-notation",
@@ -765,16 +765,16 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.4.6",
+            "version": "3.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "3ef8657a78278dfeae7707d51747251db4176240"
+                "reference": "511629a54465e89a31d3d7e4cf0935feab8b14c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/3ef8657a78278dfeae7707d51747251db4176240",
-                "reference": "3ef8657a78278dfeae7707d51747251db4176240",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/511629a54465e89a31d3d7e4cf0935feab8b14c1",
+                "reference": "511629a54465e89a31d3d7e4cf0935feab8b14c1",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -830,7 +830,7 @@
                 "JWS",
                 "jwt"
             ],
-            "time": "2021-09-28T19:18:28+00:00"
+            "time": "2021-02-16T09:40:01+00:00"
         },
         {
             "name": "league/flysystem",
