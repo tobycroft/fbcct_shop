@@ -6,9 +6,9 @@ class Aoss
 {
     public static $send_url = "http://upload.tuuz.cc:81/upfull?token=fbcct";
 
-    public function send($real_path, $mime_type, $file_name)
+    public function send($real_path, $mime_type)
     {
-        return self::send_file($real_path, $mime_type, $file_name);
+        return self::send_file($real_path, $mime_type);
     }
 
     public static function send_file($real_path, $mime_type)
