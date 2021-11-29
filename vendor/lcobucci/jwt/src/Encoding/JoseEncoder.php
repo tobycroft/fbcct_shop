@@ -6,14 +6,17 @@ namespace Lcobucci\JWT\Encoding;
 use JsonException;
 use Lcobucci\JWT\Decoder;
 use Lcobucci\JWT\Encoder;
-use Lcobucci\JWT\SodiumBase64Polyfill;
+use SodiumException;
 
 use function json_decode;
 use function json_encode;
+use function sodium_base642bin;
+use function sodium_bin2base64;
 
 use const JSON_THROW_ON_ERROR;
 use const JSON_UNESCAPED_SLASHES;
 use const JSON_UNESCAPED_UNICODE;
+use const SODIUM_BASE64_VARIANT_URLSAFE_NO_PADDING;
 
 /**
  * A utilitarian class that encodes and decodes data according with JOSE specifications
@@ -44,17 +47,15 @@ final class JoseEncoder implements Encoder, Decoder
 
     public function base64UrlEncode(string $data): string
     {
-        return SodiumBase64Polyfill::bin2base64(
-            $data,
-            SodiumBase64Polyfill::SODIUM_BASE64_VARIANT_URLSAFE_NO_PADDING
-        );
+        return sodium_bin2base64($data, SODIUM_BASE64_VARIANT_URLSAFE_NO_PADDING);
     }
 
     public function base64UrlDecode(string $data): string
     {
-        return SodiumBase64Polyfill::base642bin(
-            $data,
-            SodiumBase64Polyfill::SODIUM_BASE64_VARIANT_URLSAFE_NO_PADDING
-        );
+        try {
+            return sodium_base642bin($data, SODIUM_BASE64_VARIANT_URLSAFE_NO_PADDING, '');
+        } catch (SodiumException $sodiumException) {
+            throw CannotDecodeContent::invalidBase64String($sodiumException);
+        }
     }
 }
