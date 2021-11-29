@@ -21,5 +21,4 @@ class Config {
             InMemory::base64Encoded(env('jwt.encryption'))
         );
     }
-
 }
