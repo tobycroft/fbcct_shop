@@ -321,7 +321,8 @@ class Index extends Auth
                 }
                 $json = Payment::refund(Users::info(Users::get("id")), $order["order_no"]);
                 if ($json["code"] != "0") {
-                    return Response::returnArray($json["echo"], 0);
+//                    return Response::returnArray($json["echo"], 0);
+                    throw new \Exception($json["echo"], 0);
                 }
                 Order::refund($refunds_id, $admin_id);
                 Db::commit();
