@@ -144,6 +144,7 @@ class Users {
     }
 
     public static function avatar($image="",$root=true){
+        return;
         if(Check::url($image)){
             return $image;
         }
