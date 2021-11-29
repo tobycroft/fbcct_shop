@@ -9,6 +9,7 @@
 namespace app\api\controller\wap;
 
 use app\common\model\system\Setting;
+use mall\Aoss\Aoss;
 use mall\basic\Area;
 use mall\basic\Payment;
 use mall\library\oss\aliyun\AliyunOssClient;
@@ -724,6 +725,7 @@ class Ucenter extends Base
             $thumb = $dir . '/' . $uploadFile;
             $image = Image::open($thumb);
             $image->thumb(80, 80)->save($thumb);
+            Aoss::send_file()
 
             $setting = \mall\basic\Setting::get("upload");
             if (isset($setting["type"]) && $setting["type"] == 1) {
