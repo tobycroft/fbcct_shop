@@ -11,10 +11,10 @@ class Aoss
         return self::send_file($real_path, $mime_type, $file_name);
     }
 
-    public static function send_file($real_path, $mime_type, $file_name)
+    public static function send_file($real_path, $mime_type)
     {
         $postData = [
-            'file' => new \CURLFile(realpath($real_path), $mime_type, $file_name)
+            'file' => new \CURLFile(realpath($real_path), $mime_type)
         ];
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, self::$send_url);

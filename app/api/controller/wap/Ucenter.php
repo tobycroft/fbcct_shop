@@ -724,8 +724,10 @@ class Ucenter extends Base
             //生成缩略图
             $thumb = $dir . '/' . $uploadFile;
             $image = Image::open($thumb);
-            $image->thumb(80, 80)->save($thumb);
-            Aoss::send_file()
+            $nm = $image->thumb(80, 80)->save($thumb);
+           $ret= Aoss::send_file($thumb, $image->mime());
+            print_r($ret);
+            die();
 
             $setting = \mall\basic\Setting::get("upload");
             if (isset($setting["type"]) && $setting["type"] == 1) {
