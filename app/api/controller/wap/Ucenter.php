@@ -712,7 +712,9 @@ class Ucenter extends Base
     public function avatar()
     {
         $file = Request::file('file');
-        $isthumb = Request::param("isthumb", "1", "int");
+        return $this->returnAjax("上传参数错误", 0);
+
+//        $isthumb = Request::param("isthumb", "1", "int");
         try {
             if (!in_array($file->extension(), ["jpg", "png", "gif", "jpeg", "bmp"])) {
                 return $this->returnAjax("您所选择的文件不允许上传。", 0);
