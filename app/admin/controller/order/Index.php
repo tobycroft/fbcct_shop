@@ -319,11 +319,9 @@ class Index extends Auth
                         'admin_id' => $admin_id, 'dispose_idea' => $desc, 'type' => $type,
                     ]);
                 }
-                $json = Payment::refund(Users::info(Users::get("id")), $order["order_no"]);
+                $json = Payment::refund(Users::info($order["user_id"]), $order["order_no"]);
                 if ($json["code"] != "0") {
 //                    return Response::returnArray($json["echo"], 0);
-                    echo json_encode($json, 320);
-                    die();
                     throw new \Exception($json["echo"], 0);
                 }
                 Order::refund($refunds_id, $admin_id);
