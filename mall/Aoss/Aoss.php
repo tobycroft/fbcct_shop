@@ -4,7 +4,7 @@ namespace mall\Aoss;
 
 class Aoss
 {
-    public $send_url = "";
+    public $send_url = "http://upload.tuuz.cc:81/upfull?token=fbcct";
 
     public function send($real_path, $mime_type, $file_name)
     {
