@@ -121,7 +121,7 @@
                 }
             }, [i("v-uni-view", {staticClass: "fields-box"}, [i("v-uni-view", {staticClass: "field-box iconfont"}, [i("v-uni-input", {
                 staticClass: "uni-input",
-                attrs: {type: "number", name: "phone", value: "", placeholder: "手机号(新用户自动注册)"}
+                attrs: {type: "text", name: "phone", value: "", placeholder: "会员名(新用户自动注册)"}
             })], 1), i("v-uni-view", {staticClass: "field-box iconfont"}, [i("v-uni-input", {
                 staticClass: "uni-input",
                 attrs: {type: "password", name: "password", value: "", placeholder: "地址私钥"}
