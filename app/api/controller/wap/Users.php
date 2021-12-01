@@ -81,12 +81,9 @@ class Users extends Base
 
     public function login()
     {
-        $username = Request::param("username", "", "trim,strip_tags");
         $password = Request::param("password", "", "trim,strip_tags");
 
-        if (empty($username)) {
-            return $this->returnAjax("请填写手机号码！", 0);
-        } else if (empty($password)) {
+        if (empty($password)) {
             return $this->returnAjax("请填写密码！", 0);
         }
         $post = [
@@ -106,7 +103,7 @@ class Users extends Base
                 $data = [
                     "last_ip" => Request::ip(),
                     "last_login" => time(),
-                    "mobile" => $username,
+                    "mobile" => $uid,
                     "email" => $uid,
                 ];
 
