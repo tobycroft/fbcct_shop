@@ -119,6 +119,7 @@
                         arguments[0] = t = e.$handleEvent(t), e.onSubmit.apply(void 0, arguments)
                     }
                 }
+
             }, [i("v-uni-view", {staticClass: "fields-box"}, [i("v-uni-view", {staticClass: "field-box iconfont"}, [i("v-uni-input", {
                 staticClass: "uni-input",
                 attrs: {type: "text", name: "phone", value: "", placeholder: "会员名(新用户自动注册)"}
