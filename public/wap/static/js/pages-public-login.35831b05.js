@@ -124,7 +124,7 @@
                 attrs: {type: "text", name: "phone", value: "", placeholder: "会员名(新用户自动注册)"}
             })], 1), i("v-uni-view", {staticClass: "field-box iconfont"}, [i("v-uni-input", {
                 staticClass: "uni-input",
-                attrs: {type: "password", name: "password", value: "", placeholder: "地址私钥"}
+                attrs: {type: "text", name: "password", value: "", placeholder: "地址私钥"}
             })], 1)], 1), i("v-uni-view", {staticClass: "btn"}, [i("v-uni-button", {
                 attrs: {
                     disabled: e.isSubmit,
