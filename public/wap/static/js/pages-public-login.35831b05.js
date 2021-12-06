@@ -32,7 +32,7 @@
                     this.$utils.switchTab("index/index")
                 }, onSubmit: function (e) {
                     var t = this, i = e.detail.value;
-                    return this.isSubmit = !0, "" == i.phone ? (this.isSubmit = !1, void this.$utils.msg("请填写手机号码！")) : (0, a.checkPhone)(i.phone) ? "" == i.password ? (this.isSubmit = !1, void this.$utils.msg("请填写密码！")) : void this.$http.sendLogin({
+                    return this.isSubmit = !0, "" == i.phone ? (this.isSubmit = !1, void this.$utils.msg("请填写手机号码！")) : (i.phone) ? "" == i.password ? (this.isSubmit = !1, void this.$utils.msg("请填写密码！")) : void this.$http.sendLogin({
                         username: i.phone,
                         password: i.password
                     }).then((function (e) {
