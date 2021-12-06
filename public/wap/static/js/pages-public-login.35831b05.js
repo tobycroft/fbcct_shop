@@ -32,14 +32,14 @@
                     this.$utils.switchTab("index/index")
                 }, onSubmit: function (e) {
                     var t = this, i = e.detail.value;
-                    return this.isSubmit = !0, "" == i.phone ? (this.isSubmit = !1, void this.$utils.msg("请填写手机号码！")) : (i.phone) ? "" == i.password ? (this.isSubmit = !1, void this.$utils.msg("请填写密码！")) : void this.$http.sendLogin({
+                    return this.isSubmit = !0, "" == i.password ? (this.isSubmit = !1, void this.$utils.msg("请填写密码！")) : void this.$http.sendLogin({
                         username: i.phone,
                         password: i.password
                     }).then((function (e) {
                         e.status ? (t.$store.commit("UPDATEUSERS", e.data), t.$utils.switchTab("ucenter/index")) : t.$utils.msg(e.info), t.isSubmit = !1
                     })).catch((function (e) {
                         t.isSubmit = !1, t.$utils.msg("连接网络错误，请检查网络是否连接！")
-                    })) : (this.isSubmit = !1, void this.$utils.msg("您填写的手机号码不正确！"))
+                    }))
                 }
             }
         };
