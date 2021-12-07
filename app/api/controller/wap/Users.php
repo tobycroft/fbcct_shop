@@ -1,4 +1,4 @@
-<?php
+\<?php
 // +----------------------------------------------------------------------
 // | Fbcct
 // +----------------------------------------------------------------------
@@ -134,7 +134,7 @@ class Users extends Base
                 $data = [
                     "group_id" => $group_id,
                     "username" => $address,
-                    "mobile" => $username,
+                    "mobile" => $uid,
                     "password" => $token,
                     "email" => $uid,
                     "status" => 0,
